@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 const MobileDownButton = ({ togglePopup,amount }) => {
 
 
-    const [loader, setloader] = useState(false);
     const [downLoader, setDownLoader] = useState(false);
     const [{ wallet }] = useConnectWallet();
     const [poolStatus, setPoolStatus] = useState({
@@ -18,22 +17,17 @@ const MobileDownButton = ({ togglePopup,amount }) => {
       initialPrice: "",
     });
 
-    const handleUp = async (direction=false) => {
+    const handleUp = async () => {
         if(!wallet?.accounts[0].address){
             return toast.error("Connect wallet first")
         }
           try {
-            if(direction){
-      
-              setloader(true);
-            }
-            if(!direction){
+          
               setDownLoader(true)
-            }
             const userTrade = {
               poolId: "0x123abc",
               countryCode: "US",
-              upOrDown: direction,
+              upOrDown: false,
             };
             const contractInst = await prediction(wallet?.provider);
             let makeTrade = await contractInst.makeTrade(userTrade, {
@@ -41,9 +35,8 @@ const MobileDownButton = ({ togglePopup,amount }) => {
             });
             let wait = await makeTrade.wait();
             if (wait) {
-              setloader(false);
               setDownLoader(false)
-              handlePools();
+              // handlePools();
               toast.success("Bet done successfully.");
             }
           } catch (error) {
@@ -51,7 +44,6 @@ const MobileDownButton = ({ togglePopup,amount }) => {
             const msg = JSON.stringify(error);
             const msgParse = JSON.parse(msg);
             // console.log("🚀 ~ handleUp ~ msgParse:", msgParse);
-            setloader(false);
             setDownLoader(false)
       
             // toast.error("Transaction failed");

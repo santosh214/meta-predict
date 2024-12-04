@@ -20,15 +20,7 @@ const MobilePoolDown = () => {
         const poolsData = await contractInst.pools("0x123abc"); // Pass appropriate bytes value or address
         // Pools data is an array of the outputs from the pools function
         const [
-          created,
-          startPrice,
-          endPrice,
-          minBetAmount,
-          maxBetAmount,
-          poolBetsLimit,
-          upBetGroup,
           downBetGroup,
-          roundStartTime,
         ] = poolsData;
         // console.log("Round Start Time:", new Date(roundStartTime * 1000).toLocaleString()); // Convert timestamp to readable format
         setDownBetGroupData(downBetGroup?.addresses);
@@ -52,7 +44,7 @@ const MobilePoolDown = () => {
       // console.log("Pool ID:", poolId);
       setTimeout(() => {
         handlePools();
-      }, 5000);
+      }, 8000);
     });
 
     return () => {
@@ -66,7 +58,7 @@ const MobilePoolDown = () => {
         <div className="pool_top_down">
           <p className="pool_return_amt_down"></p>
           <div className="pool_players">
-            <span className="pool_players_amt">{downBetGroupData.length}</span>
+            <span className="pool_players_amt">{downBetGroupData?.length}</span>
             <p className="players">PLAYERS</p>
           </div>
         </div>

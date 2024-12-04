@@ -53,7 +53,7 @@ const MobilePoolUp = () => {
       // console.log("Pool ID:", poolId);
       setTimeout(() => {
         handlePools();
-      }, 5000);
+      }, 8000);
     });
 
     return () => {
@@ -67,7 +67,7 @@ const MobilePoolUp = () => {
         <div className="pool_top_up">
           <p className="pool_return_amt_up"></p>
           <div className="pool_players">
-            <span className="pool_players_amt">{upBetGroupData.length}</span>
+            <span className="pool_players_amt">{upBetGroupData?.length}</span>
             <p className="players">PLAYERS</p></div></div>
         <div className='trade_bets_mobile'>
 

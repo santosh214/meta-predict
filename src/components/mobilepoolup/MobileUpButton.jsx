@@ -16,23 +16,18 @@ const MobileUpButton = ({togglePopup,amount}) => {
       finalPrice: "",
       initialPrice: "",
     });
-    const handleUp = async (direction=true) => {
+    const handleUp = async () => {
         if(!wallet?.accounts[0].address){
             return toast.error("Connect wallet first")
         }
-          console.log("🚀 ~ handleUp ~ direction:", direction)
           try {
-            if(direction){
       
               setloader(true);
-            }
-            if(!direction){
-              setDownLoader(true)
-            }
+          
             const userTrade = {
               poolId: "0x123abc",
               countryCode: "US",
-              upOrDown: direction,
+              upOrDown: true,
             };
             const contractInst = await prediction(wallet?.provider);
             let makeTrade = await contractInst.makeTrade(userTrade, {
@@ -42,7 +37,7 @@ const MobileUpButton = ({togglePopup,amount}) => {
             if (wait) {
               setloader(false);
               setDownLoader(false)
-              handlePools();
+              // handlePools();
               toast.success("Bet done successfully.");
             }
           } catch (error) {

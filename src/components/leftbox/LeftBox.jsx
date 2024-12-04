@@ -86,6 +86,7 @@ const LeftBox = ({amount, setAmount}) => {
             // const [ upBetGroup, downBetGroup] = poolsData;
             // console.log("Round Start Time:", new Date(roundStartTime * 1000).toLocaleString()); // Convert timestamp to readable format
             setUpBetGroupData(upBetGroup?.addresses);
+            console.log("🚀 ~ handlePools ~ upBetGroup?.addresses:", upBetGroup?.addresses)
             // setDownBetGroupData(downBetGroup?.addresses);
           } catch (error) {
             console.error("Error fetching pools data:", error);

@@ -3,12 +3,11 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { loaderGif } from "../../../assets/images";
 const Timer = ({poolStatus,isMobile}) => {
-console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
-// console.log("🚀 ~ Timer ~ poolStatus:", (poolStatus.time.split(':')[1].split(" ")[0])-5)
+// console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
 
     const [timeLeft, setTimeLeft] = useState(15); 
     const [progress, setProgress] = useState(0); 
-    const [color, setColor] = useState("#8ad603"); 
+    const [color, setColor] = useState("#FF832B"); 
     const [isLoading, setIsLoading] = useState(false); 
   
     // useEffect(() => {
@@ -34,7 +33,7 @@ console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
     useEffect(() => {
       // Change color based on time left
       if (timeLeft > 10) {
-        setColor("#8ad603");
+        setColor("#FF832B");
       } else if (timeLeft > 5) {
         setColor("rgb(234, 132, 78)");
       } else {
@@ -55,6 +54,10 @@ console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
 
   const timeInMinutes = parseInt(poolStatus?.time?.split(':')[1]?.split(" ")[0]);
   const clampedTime = Math.max(0, timeInMinutes - 5); // ensure the time does not go negative
+  const timeLeftt =poolStatus.status === "Betting Started"? Math.max(0, timeInMinutes - 5):poolStatus.time; // Ensure time doesn't go negative
+  // console.log("🚀 ~ Timer ~ timeLeftt:", timeLeftt)
+  // Disable the button if timeLeft is 0 or betting is not started
+  // const isBettingAllowed = poolStatus.status === "Betting Started" && timeLeftt > 0;
 
     return (
         <>
@@ -72,8 +75,8 @@ console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
                         <>
                             <CircularProgressbar
                                 className="progressBar"
-                                value={clampedTime}
-                                text={clampedTime}
+                                value={timeLeftt ===0? '00:00':timeLeftt}
+                                text={timeLeftt ===0? '00:00':timeLeftt}
                                 styles={buildStyles({
                                     textColor: color,
                                     pathColor: color,
@@ -88,7 +91,7 @@ console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
                 </div>
            
             </div>
-          {!isMobile &&  <span className="sec" > {poolStatus?.status}</span>}
+          {!isMobile &&  <span className="sec" > {timeLeftt ===0?'-': poolStatus?.status}</span>}
         </>
     )
 }

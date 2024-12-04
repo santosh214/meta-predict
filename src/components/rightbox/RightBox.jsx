@@ -12,7 +12,6 @@ import { toast } from 'react-toastify'
 const RightBox = ({amount, setAmount}) => {
   // console.log("🚀 ~ RightBox ~ amount:", amount)
 
-  const [loader, setloader] = useState(false);
   const [downLoader, setDownLoader] = useState(false);
   const [{ wallet }] = useConnectWallet();
   const [downBetGroupData, setDownBetGroupData] = useState([]); // Store down bet group data
@@ -25,23 +24,17 @@ const RightBox = ({amount, setAmount}) => {
   });
   // console.log("🚀 ~ RightBox ~ poolStatus:", poolStatus)
 
-  const handleUp = async (direction=false) => {
+  const handleUp = async () => {
     if(!wallet?.accounts[0].address){
       return toast.error("Connect wallet first")
   }
-      // console.log("🚀 ~ handleUp ~ direction:", direction)
       try {
-        if(direction){
-  
-          setloader(true);
-        }
-        if(!direction){
+        
           setDownLoader(true)
-        }
         const userTrade = {
           poolId: "0x123abc",
           countryCode: "US",
-          upOrDown: direction,
+          upOrDown: false,
         };
         const contractInst = await prediction(wallet?.provider);
         let makeTrade = await contractInst.makeTrade(userTrade, {
@@ -49,7 +42,6 @@ const RightBox = ({amount, setAmount}) => {
         });
         let wait = await makeTrade.wait();
         if (wait) {
-          setloader(false);
           setDownLoader(false)
           handlePools();
           toast.success("Bet done successfully.");
@@ -59,7 +51,6 @@ const RightBox = ({amount, setAmount}) => {
         const msg = JSON.stringify(error);
         const msgParse = JSON.parse(msg);
         // console.log("🚀 ~ handleUp ~ msgParse:", msgParse);
-        setloader(false);
         setDownLoader(false)
   
         // toast.error("Transaction failed");
@@ -89,6 +80,7 @@ const RightBox = ({amount, setAmount}) => {
             ] = poolsData;
             // console.log("Round Start Time:", new Date(roundStartTime * 1000).toLocaleString()); // Convert timestamp to readable format
             setDownBetGroupData(downBetGroup?.addresses);
+            console.log("🚀 ~ handlePools ~ downBetGroup?.addresses:", downBetGroup?.addresses)
           } catch (error) {
             console.error("Error fetching pools data:", error);
           }
