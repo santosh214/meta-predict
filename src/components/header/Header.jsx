@@ -66,9 +66,9 @@ const Header = () => {
                     </div>
                 </Link> */}
                 <div className="right_group">
-                    <Link className="user_avatar" to={'/user-profile'}>
+                    {/* <Link className="user_avatar" to={'/user-profile'}>
                         <img src={image} alt="Profile" className="profile-image" />
-                    </Link>
+                    </Link> */}
                     {/* <div className="toggle_chat">
                     <img src={chatImg} alt='chat image'/>
                     <span>Chat</span>

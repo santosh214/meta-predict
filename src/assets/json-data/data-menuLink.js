@@ -21,18 +21,18 @@ export const menuLinks = [
     //         }
     //     ]
     // },
-    // {
-    //     id: 2,
-    //     title: 'My Activity',
-    //     links: [
-    //         {
-    //             id: 2,
-    //             name: 'Trade',
-    //             link: '/trade',
-    //             menuClass: 'page_link trades_history',
-    //         }
-    //     ]
-    // },
+    {
+        id: 2,
+        title: 'My Profile',
+        links: [
+            {
+                id: 2,
+                name: 'Profile',
+                link: '/user-profile',
+                menuClass: 'page_link trades_history',
+            }
+        ]
+    },
     {
         id: 3,
         title: 'Referral Program',
