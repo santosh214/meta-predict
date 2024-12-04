@@ -1,0 +1,195 @@
+/*--------------------------------------------------------------
+# USERPROFILE BAR  START
+--------------------------------------------------------------*/
+
+
+.user_profile_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    background: #0c0d13;
+    z-index: 998;
+    position: fixed;
+    inset: -100% auto auto auto;
+    transition: top .8s;
+    overflow: hidden;
+  }
+  .user_profile_wrap.open{
+    top: 0;
+  }
+  .user_profile_close_btn {
+    position: absolute;
+    top: 1.2em;
+    right: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    transform: scale(.9);
+  }
+  .user_profile_close_btn span {
+    display: flex;
+    width: 2em;
+    height: 2em;
+    background: rgba(246, 198, 76, 0.32);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.6em;
+    transition: .2s linear;
+    color: #ffad42;
+  }
+  .user_profile_close_btn span:hover{
+    color: #ffad42;
+    transform: rotate(180deg);
+  }
+  
+  .user_profile_header_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .user_profile_header {
+    font-family: "Barlow Semi" Condensed;
+    font-size: 3.2em;
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+    font-stretch: semi-condensed;
+    font-style: italic;
+    line-height: normal;
+    letter-spacing: -.020em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #f0c434;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.817);
+  
+      
+  }
+  .user_profile_form_box {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 27.2em;
+    height: 22em;
+  }
+  .user_profile_image_box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8em;
+    width: 8em;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.2);
+  
+  }
+  .user_profile_image_box .user_profile_user_avatar_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  
+  }
+  .user_profile_file_input {
+    display: none;
+  }
+  .user_profile_upload_btn:hover {
+    opacity: .7;
+  }
+  
+  .user_profile_upload_btn {
+    position: absolute;
+    bottom: 0;
+    right: -0.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.2em;
+    width: 3.2em;
+    border-radius: 50%;
+    background-color: #d5af4f;
+    cursor: pointer;
+  }
+  .user_profile_upload_btn .user_profile_upload_img{
+    font-size: 1.5em;
+    color: #fff;
+  }
+  .user_profile_form_desc_text {
+    margin-top: -2em;
+    width: 85%;
+    font-family: "Source Sans 3",sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    color: silver;
+    text-align: center;
+  }
+  .user_profile_apply_box {
+    height: 3.8em;
+    width: 100%;
+  }
+  .user_profile_apply_btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 3em;
+    border: solid 1.2px #f4d56f;
+    font-family: "Source Sans 3",sans-serif;
+    font-size: 1.85em;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: normal;
+    text-align: center;
+    overflow: hidden;
+    background-image: linear-gradient(96deg, #d99e38 0%, #fff585 15%, #ebbc53 24%, #edc964 54%, #e4b54f 72%, #dfa942 82%, #dda53e 84%, #e1ac43 87%, #eebf50 90%, #fbd35e 93%, #f9d15d 97%, #f4ca58 98%, #eabd50 99%, #dcab45 100%, #c99437 101%, #b47926 102%);
+  }
+  
+  .user_profile_apply_btn:before{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+    -webkit-animation: shimmer 2s infinite;
+            animation: shimmer 2s infinite;
+    content: "";
+  }
+
+.user_profile_apply_btn:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+}
+.user_profile_apply_btn:enabled{
+  opacity: 1;
+  cursor: pointer;
+}
+  @-webkit-keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /*--------------------------------------------------------------
+  # USERPROFILE BAR  END
+  --------------------------------------------------------------*/
+  

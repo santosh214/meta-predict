@@ -1,0 +1,1049 @@
+:root {
+    --expansionRowHeight: 3.4em;
+    --expansionHeadHeight: 3em;
+}
+
+.jackpot_winners_page.jackpot_winners {
+    overflow-y: auto;
+    height: 100%;
+    /* background-image: url('../../../assets/images/img/light_bg.png'); */
+}
+
+.jackpot_winners{
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    background-color: #0c0d13;
+    /* z-index: 998; */
+    z-index: 99;
+    transition: left 1s;
+    overflow: hidden;
+}
+
+/* .jackpot_winners_page.jackpot_winners .base-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-position: top left;
+    background-size: 96%;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/img/');
+} */
+
+.jackpot_winners_page.jackpot_winners .lights-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    opacity: 0.6;
+    background-image: url('../../../assets/images/img/light_bg.png');
+    /* z-index: -1; */
+}
+
+.jackpot-winners-header .back_btn {
+    display: block;
+    width: 3em;
+    height: 2.4em;
+    background: rgba(244, 213, 111, 0) url('../../../assets/images/img/arrow-left.svg') center no-repeat;
+    background-size: 80% 70%;
+    transition: all .2s;
+    border-radius: 1.2em;
+    position: absolute;
+    left: 1em;
+    z-index: 2;
+}
+
+.jackpot_winners .header-top,
+.jackpot_winners .header-bottom {
+    position: relative;
+    width: 100%;
+    /* height: 10em; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.jackpot_winners .header-top {
+    height: 5em;
+}
+
+.jackpot-winners-header .header-top .header-links {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    left: 7em;
+}
+
+.jackpot-winners-header .header-top .header-links .header-link {
+    outline: 0;
+    cursor: pointer;
+}
+
+.jackpot-winners-header .header-top .header-link .image {
+    width: 2.5em;
+    height: 2.5em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 2.5em;
+    background-position: center;
+}
+
+.jackpot-winners-header .header-top .header-link.faq .image {
+    background-image: url('../../../assets/images/img/faq_qustion.svg');
+}
+
+.jackpot-winners-header .header-top .header-link.history .image {
+    background-image: url('../../../assets/images/img/faq_qustion.svg');
+}
+
+.jackpot-winners-header .header-top .header-link .text {
+    text-align: center;
+    font-family: 'SF UI Display', sans-serif;
+    font-weight: 400;
+    color: #b9b9b9;
+    margin-top: 0.2em;
+}
+
+.jackpot-winners-header .header-top .header-link .text span {
+    font-size: 0.8em;
+}
+
+.jackpot-winners-header .jackpot-page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f4d56f;
+    font-family: 'Barlow Semi Condensed';
+    font-weight: 500;
+    line-height: 2.8em;
+    text-shadow: 0 0.2em 0.5em #030303b8;
+    text-align: center;
+    font-style: italic;
+    text-transform: uppercase;
+    line-height: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.jackpot-winners-header .jackpot-page-title span.title {
+    font-size: 2.1em;
+}
+
+.jackpot-winners-header .jackpot-page-title span.date {
+    font-size: 2.1em;
+}
+
+.jackpot-winners-header .weekly-jackpot-button {
+    position: absolute;
+    right: 5em;
+    background-image: url('../../../assets/images/img/weekly-jackpot-button.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #525252;
+    width: 13.8em;
+    height: 3.5em;
+    border: 0;
+    border-radius: 0.5em;
+    border: 0.1em solid #F4D56F;
+    font-size: inherit;
+}
+
+.jackpot-winners-header .menu_btn {
+    position: absolute;
+    right: 1em;
+    width: 2.6em;
+    height: 2.4em;
+    padding: 0;
+    background: rgba(244, 213, 111, 0);
+    transition: all .2s;
+    border-radius: 1.2em;
+    border-width: 0;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+.jackpot-winners-header .menu_btn img {
+    width: 100%;
+    height: 100%;
+}
+
+.jackpot_winners .weekly-winners {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.4em;
+    margin: 0em 0 2em 0;
+    padding-top: 3.6em;
+}
+
+.jackpot_winners .winner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: center;
+    padding: 1em;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    text-align: center;
+}
+
+.jackpot_winners .monthly-winners {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 4.4em 0em 0em 0em;
+}
+
+.jackpot_winners .monthly-winner {
+    width: 11.8em;
+    height: 11.2em;
+    background-image: url('../../../assets/images/img/frame_1.png');
+}
+
+/* .jackpot_winners .weekly-winners .weekly-winner {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+} */
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 {
+    background-image: url('../../../assets/images/img/history_card_bg.svg');
+    height: 11.6em;
+    aspect-ratio: 40 / 39;
+    /* order: 3; */
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 {
+    background-image: url('../../../assets/images/img/history_card_bg.svg');
+    height: 11.8em;
+    aspect-ratio: 110 / 119;
+    /* margin-bottom: -1em; */
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 {
+    margin-top: 1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 {
+    margin-top: 1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 {
+    background-image: url('../../../assets/images/img/history_card_bg.svg');
+    height: 11.8em;
+    aspect-ratio: 50 / 59;
+    /* margin-bottom: -2em; */
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 {
+    margin-top: 2em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 {
+    margin-top: 2em;
+}
+
+.jackpot_winners .weekly-winners .winner-2-4-wrap {
+    display: flex;
+    gap: inherit;
+}
+
+.jackpot_winners .weekly-winners .winner-3-5-wrap {
+    display: flex;
+    gap: inherit;
+}
+
+/* frame */
+
+.jackpot_winners .weekly-winners .weekly-winner .frame {
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    top: -27%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 1 / 1;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .month {
+    color: #f4d56f;
+    text-transform: uppercase;
+    font-family: 'Barlow Semi Condensed';
+    font-weight: 500;
+    text-align: center;
+    font-style: italic;
+    position: absolute;
+    top: -6.5em;
+    left: 0;
+    right: 0;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .month span {
+    font-size: 1.7em;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .frame {
+    background-image: url('../../../assets/images/img/winner_bg.svg');
+    position: absolute;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: -51%;
+    width: 13.5em;
+    height: 12em;
+    aspect-ratio: unset;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .frame {
+    background-image: url('../../../assets/images/img/winner_1.svg');
+    left: 1em;
+    right: 1em;
+    top: -40%;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .frame {
+    background-image: url('../../../assets/images/img/winner_2.svg');
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .frame {
+    background-image: url('../../../assets/images/img/winner_3.svg');
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .frame,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .frame {
+    top: -21%;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .frame {
+    background-image: url('../../../assets/images/img/winner_4.svg');
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .frame {
+    background-image: url("../../../assets/images/img/winner_5.svg");
+}
+
+/* pic */
+
+.jackpot_winners .weekly-winners .weekly-winner .pic,
+.jackpot_winners .monthly-winners .monthly-winner .pic {
+    position: absolute;
+    top: -1em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    background-size: contain;
+    border: 0.2em solid #f4d56f;
+}
+.jackpot_winners .monthly-winners .monthly-winner .pic img{
+    width: 100%; height: 100%;
+    border-radius: 50%;
+}
+.jackpot_winners .weekly-winners .weekly-winner .pic img{
+    width: 100%; height: 100%;
+    border-radius: 50%;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .pic {
+    width: 4.7em;
+    height: 4.7em;
+    top: -2.7em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .pic {
+    width: 5em;
+    height: 5em;
+    top: -2.85em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .pic,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .pic {
+    width: 4.5em;
+    height: 4.5em;
+    top: -1.5em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .pic,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .pic {
+    width: 4em;
+    height: 4em;
+    top: -1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner .caption,
+.jackpot_winners .monthly-winners .monthly-winner .caption {
+    color: #ffffff;
+    opacity: 0.7;
+    text-transform: uppercase;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .caption {
+    margin-top: 4.4em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .caption {
+    margin-top: 4.7em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .caption,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .caption {
+    margin-top: 5.3em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .caption span,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .caption span {
+    font-size: 0.9em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .caption,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .caption {
+    margin-top: 5.2em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .caption span,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .caption span {
+    font-size: 0.9em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner .amount,
+.jackpot_winners .monthly-winners .monthly-winner .amount {
+    color: #f4d56f;
+    font-weight: 500;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .amount {
+    margin-top: -0.4em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .amount {
+    margin-top: -0.4em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .amount,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .amount {
+    margin-top: -0.3em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .amount,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .amount {
+    margin-top: -0.3em;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .amount .icon-matic {
+    display: inline-block;
+    position: relative;
+    /* padding-left: 1.3em; */
+    height: 1.3em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .amount .icon-matic {
+    display: inline-block;
+    position: relative;
+    /* padding-left: 1.4em; */
+    height: 1.4em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .amount .icon-matic,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .amount .icon-matic {
+    display: inline-block;
+    position: relative;
+    /* padding-left: 1.2em; */
+    height: 1.2em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .amount .icon-matic,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .amount .icon-matic {
+    display: inline-block;
+    position: relative;
+    /* padding-left: 1.1em; */
+    height: 1.1em;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .amount .icon-matic::before {
+    font-size: 1.3em;
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .amount .icon-matic::before {
+    font-size: 1.4em;
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .amount .icon-matic::before,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .amount .icon-matic::before {
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .amount .icon-matic::before,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .amount .icon-matic::before {
+    font-size: 1.1em;
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner .wallet,
+.jackpot_winners .monthly-winners .monthly-winner .wallet {
+    color: #00abfc;
+    text-decoration: underline;
+    margin: auto 0 0 0;
+    cursor: pointer;
+}
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .wallet span a,
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .wallet span a,
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .wallet span a,
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .wallet span a,
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .wallet span a{
+    color: #00abfc;
+    text-decoration: underline;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .amount span {
+    font-size: 2.1em;
+}
+
+.jackpot_winners .monthly-winners .monthly-winner .wallet span {
+    font-size: 0.92em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-1 .amount span {
+    font-size: 2.3em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .amount span {
+    font-size: 1.8em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .amount span {
+    font-size: 1.8em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .amount span {
+    font-size: 1.8em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .amount span {
+    font-size: 1.8em;
+}
+
+
+.jackpot_winners .monthly-winners .monthly-winner .wallet span a{
+    color: #00abfc;
+    text-decoration: underline;   
+}
+.jackpot_winners .weekly-winners .monthly-winner .wallet span a{
+    color: #00abfc;
+    text-decoration: underline;   
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-2 .wallet span {
+    font-size: 0.9em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-3 .wallet span {
+    font-size: 0.9em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-4 .wallet span {
+    font-size: 0.8em;
+}
+
+.jackpot_winners .weekly-winners .weekly-winner.winner-5 .wallet span {
+    font-size: 0.8em;
+}
+
+.jackpot_winners .btn-bottom {
+    color: #f4d56f;
+    border: 0.1em solid #f4d56f;
+    height: 3.3em;
+    line-height: 3.2em;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 1.5em;
+    border-radius: 0.3em;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0em 1.5em 0em 1.5em;
+    letter-spacing: 0.1em;
+}
+
+.jackpot_winners .btn-bottom span {
+    font-size: 1.2em;
+}
+
+.jackpot_winners .btn-bottom.btn-share-results {
+    left: .7em;
+    background-image: url('../../../assets/images/img/share.svg');
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-position: 0.8em center;
+    padding-left: 3.1em;
+}
+
+.jackpot_winners .btn-bottom.btn-history-winners {
+    right: .7em;
+}
+
+.jackpot_winners .bottom-nav {
+    display: none;
+}
+
+.jackpot_winners .jackpot-history {
+    padding: 0 1em 1em 1em;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #0c0d13;
+    z-index: 2;
+}
+
+@media screen and (max-width: 480px) {
+
+    .jackpot_winners_page.jackpot_winners {
+        height: calc(100% - 5.4em);
+        /* position: relative; */
+        /* padding-bottom: 6.2em; */
+        box-sizing: border-box;
+
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    body .jackpot-winners-header .weekly-jackpot-button,
+    body .jackpot_winners .header-top .header-links {
+        display: none;
+    }
+
+    .jackpot_winners .bottom-nav {
+        display: block;
+        position: fixed;
+        bottom: 0em;
+        width: 100%;
+        height: 5.4em;
+        background: #001426;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 100%;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-links .bottom-nav-link {
+        outline: 0;
+        cursor: pointer;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-links .bottom-nav-link.faq,
+    .jackpot_winners .bottom-nav .bottom-nav-links .bottom-nav-link.history {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-links .bottom-nav-link.weekly-jackpot {
+        width: 22em;
+        border-left: 0.1em solid #979797;
+        border-right: 0.1em solid #979797;
+        background: #3c2c2c;
+        background-image: url('../../../assets/images/img/weekly-jackpot-button.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-link .image {
+        width: 3.7em;
+        height: 3.7em;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-size: 3.7em;
+        background-position: center;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-link.faq .image {
+        background-image: url('../../../assets/images/img/faq_qustion.svg');
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-link.history .image {
+        background-image: url('../../../assets/images/img/time.svg');
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-link .text {
+        text-align: center;
+        font-family: 'SF UI Display', sans-serif;
+        font-weight: 400;
+        color: #757575;
+        margin-top: -0.3em;
+    }
+    
+    .jackpot_winners .bottom-nav .bottom-nav-link .text span {
+        font-size: 1.1em;
+    }
+
+    .jackpot-winners-header .menu_btn {
+        right: 0.4em;
+        width: 4em;
+        height: 3.8em;
+    }
+
+    .jackpot-winners-header .back_btn {
+        width: 4em;
+        height: 3.4em;
+    }
+
+    .jackpot_winners .winners-wrap {
+        flex-grow: 1;
+    }
+
+    .jackpot_winners .weekly-winners {
+        font-size: 1.1em;
+        gap: 1em;
+    }
+
+    .jackpot_winners .weekly-winners .winner-2-4-wrap {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        margin-top: 4em;
+    }
+
+    .jackpot_winners .weekly-winners .winner-3-5-wrap {
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 4em;
+    }
+
+    .jackpot-winners-header .jackpot-page-title {
+        flex-direction: column-reverse;
+        line-height: unset;
+        top: 26em;
+        z-index: 1;
+    }
+
+    .jackpot-winners-header .jackpot-page-title span.title {
+        font-size: 4em;
+        line-height: 0.9em;
+    }
+
+    .jackpot-winners-header .jackpot-page-title span.date {
+        font-size: 3.3em;
+        line-height: 0.85em;
+    }
+
+    .jackpot_winners .monthly-winners {
+        font-size: 1.1em;
+        margin: -2.4em 0em 0em 0em;
+    }
+
+    .jackpot_winners .monthly-winners .monthly-winner .month {
+        top: -7.2em;
+    }
+
+    .jackpot_winners .monthly-winners .monthly-winner .month span {
+        font-size: 2.3em;
+    }
+
+    .jackpot_winners_page.jackpot_winners .lights-bg {
+        background-position: center -9em;
+        background-size: 82em;
+        background-repeat: no-repeat;
+        opacity: 1;
+    }
+
+    .jackpot_winners_page.jackpot_winners .base-bg {
+        position: absolute;
+        width: 100%;
+        /* background-image: url('/public/media/images/jackpot/monthly-jackpot-header-mobile-bg.png'); */
+        background-position: left -6em;
+        background-repeat: no-repeat;
+        height: 46em;
+        background-size: 44em;
+        opacity: 0.8;
+        display: none;
+    }
+
+    .jackpot_winners .btns-bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 0em 1em 0em 1em;
+        margin: 2em 0em 1em 0em;
+    }
+
+    .jackpot_winners .btn-bottom {
+        color: #f4d56f;
+        border: 0.1em solid #f4d56f;
+        height: 3.3em;
+        line-height: 3.2em;
+        text-align: center;
+        text-transform: uppercase;
+        /* position: absolute; */
+        /* bottom: 6.5em; */
+        border-radius: 0.3em;
+        cursor: pointer;
+        box-sizing: border-box;
+        padding: 0em 1.5em;
+        letter-spacing: 0.1em;
+        /* position: fixed; */
+        position: static;
+        z-index: 2;
+    }
+
+    .jackpot_winners .btn-bottom.btn-share-results {
+        background-position: 0.7em center;
+        /* padding-left: 3.1em; */
+    }
+
+}
+
+
+
+
+
+
+
+
+
+.jackpot-history {
+    padding: 0 1em 1em 1em;
+    /* display: none; */
+}
+
+.jackpot-history .title {
+    color: #f4d56f;
+    font-family: 'Barlow Semi Condensed';
+    font-weight: 500;
+    line-height: 2.8em;
+    text-shadow: 0 0.2em 0.5em #030303b8;
+    text-align: center;
+    font-style: italic;
+    text-transform: uppercase;
+    height: 5em;
+    line-height: 4.9em;
+}
+
+.jackpot-history .title span {
+    font-size: 3.1em;
+}
+
+
+
+.jackpot-history .table .table-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1.4em 0 1em;
+    box-sizing: border-box;
+    height: 3em;
+    background: #20242d;
+    color: #f4d56f;
+    text-transform: uppercase;
+}
+
+.jackpot-history .table .table-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #1E1D1D;
+    overflow-y: auto!important;
+    height: calc(100% - 8em)!important;
+}
+
+.jackpot-history .table .history-row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 3.4em;
+    flex-shrink: 0;
+    padding: 0 1em;
+    box-sizing: border-box;
+    
+}
+
+.jackpot-history .table .history-row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-bottom: 0.1em solid rgba(151, 151, 151, 0.3);
+}
+
+
+.jackpot-history .table-header .date,
+.jackpot-history .history-row .date {
+    width: 10%;
+}
+
+.jackpot-history .table-header .player,
+.jackpot-history .history-row .player {
+    width: 6%;
+    display: flex; align-items: center; justify-content: center;
+}
+.jackpot-history .history-row .player div img{
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border:  2px solid #e7b442;
+}
+
+.jackpot-history .table-header .wallet,
+.jackpot-history .history-row .wallet {
+    width: 18%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.jackpot-history .table-header .jackpot,
+.jackpot-history .history-row .jackpot {
+    width: 10%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.jackpot-history .table-header .rank,
+.jackpot-history .history-row .rank {
+    width: 10%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.jackpot-history .table-header .prize,
+.jackpot-history .history-row .prize {
+    width: 20%;
+    display: flex; align-items: center; justify-content: flex-end;
+}
+.jackpot-history .history-row .prize .icon-matic{
+    margin-top: .5em;
+}
+
+
+
+
+
+
+.jackpot-history .history-row .date span {
+    font-size: 1.6em;
+}
+
+.jackpot-history .history-row .player div {
+    width: 2.2em;
+    height: 2.2em;
+    margin: 0 auto;
+    background: #747474;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.jackpot-history .history-row .wallet {
+    color: #00abfc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.jackpot-history .history-row .wallet span {
+    font-size: 1.3em;
+}
+.jackpot-history .history-row .wallet span a{
+    color: #00abfc;
+    text-decoration: underline;
+}
+
+.jackpot-history .history-row .jackpot {
+    color: #f4d56f;
+    font-family: 'Barlow Semi Condensed';
+    font-weight: 500;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.jackpot-history .history-row .jackpot span {
+    font-size: 1.6em;
+}
+
+
+
+.jackpot-history .history-row .rank div {
+    width: 3em;
+    height: 3em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-size: 2.8em;
+}
+.jackpot-history .history-row .rank div img{
+    width: 100%; height: 100%;
+}
+
+.jackpot-history .history-row .prize {
+    color: #f4d56f;
+}
+
+.jackpot-history .history-row .prize .icon-matic {
+    display: inline-block;
+    position: relative;
+    padding-left: 1.2em;
+    height: 1.2em;
+}
+
+.jackpot-history .history-row .prize .icon-matic::before {
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: -0.1em;
+}
+
+.jackpot-history .history-row .prize span.amount {
+    font-size: 1.6em;
+}
+
+.jackpot-history .close {
+    position: absolute;
+    width: 1.5em;
+    height: 1.5em;
+    right: 1em;
+    top: 1em;
+    background-image: url('../../../assets/images/img/gold_x.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    
+}
+
+@media screen and (max-width: 480px) {
+
+
+}

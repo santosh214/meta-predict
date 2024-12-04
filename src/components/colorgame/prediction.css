@@ -1,0 +1,427 @@
+@media screen and (max-width: 480px){
+    .color_btns{
+        margin: 1em .5em 1em .5em;
+    }
+    .prediction_num ,.main_TabContent
+    {
+        margin: 0 .5em 1em .5em;
+
+    }
+    .GameRecord__C-head{
+        margin: 0 .4em;
+    }
+   .GameRecord__C-body {
+        margin: 0 .5em;
+    }
+}
+.color_btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.color_btns button{
+    position: relative;
+    padding: .7em 2.4em;
+    font-size: 1.2em;
+    border-radius: .4em;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    /* background: #FCFCFD; */
+    background: none;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.color_btns button:before,
+.color_btns button:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+.color_btns  .color_btn_one{
+    background-color: #67cd02;
+    border-radius: .4em;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 0.2em 0.4em,rgba(45, 35, 66, 0.15)
+     0 0.7em 1.3em  -0.19em,#4b9601 0 -0.19em 0 inset;
+}
+.color_btns  .color_btn_two{
+    background-color: #8338ec;
+    border-radius: .4em;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 0.2em 0.4em,rgba(45, 35, 66, 0.15)
+     0 0.7em 1.3em  -0.19em,#6115cb 0 -0.19em 0 inset;
+}
+.color_btns  .color_btn_three{
+    background-color: #ff0000;
+    border-radius: .4em;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 0.2em 0.4em,rgba(45, 35, 66, 0.15)
+     0 0.7em 1.3em  -0.19em,#cf0000 0 -0.19em 0 inset;
+}
+.color_btns button:active{
+    transform: scale(0.96);
+}
+
+.color_btns .color_btn_one:hover:before{
+    background-image: radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #67cd02 20%, transparent 30%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #67cd02 15%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%);
+} 
+.color_btns .color_btn_one:hover:after{
+    background-image: radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #67cd02 15%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%),
+    radial-gradient(circle, #67cd02 20%, transparent 20%);
+}
+
+.color_btns .color_btn_two:hover:before{
+    background-image: radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #8338ec 20%, transparent 30%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #8338ec 15%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%);
+} 
+.color_btns .color_btn_two:hover:after{
+    background-image: radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #8338ec 15%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%),
+    radial-gradient(circle, #8338ec 20%, transparent 20%);
+}
+
+
+
+.color_btns .color_btn_three:hover:before{
+    background-image: radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #ff0000 20%, transparent 30%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ff0000 15%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%);
+} 
+.color_btns .color_btn_three:hover:after{
+    background-image: radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ff0000 15%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%),
+    radial-gradient(circle, #ff0000 20%, transparent 20%);
+}
+.color_btns button:hover:before {
+  top: -70%;
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.color_btns button:hover:after {
+  bottom: -70%;
+
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+
+/* PREDICTION NUMBER */
+
+.prediction_num{
+    position: relative;
+    background: rgba(255,255,255,0.1);
+    border-radius: .4em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3.5em, 1fr));
+    gap: .8em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+.prediction_num div{
+    width: 3.5em;
+    height: 3.5em;
+    background-color: #67cd02;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    /* background-color: #36bc74; */
+    box-shadow: 0.2em 0.2em 0.6em rgba(0, 0, 0, 0.20),
+    inset 0.2em 0.2em 0.4em rgba(255, 255, 255, 0.20),
+    inset -0.2em -0.2em 1em rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    position: relative;
+    color: #5db504;
+    font-weight: bold;
+    z-index: 1;
+    font-size: 1.1em;
+    font-family: sans-serif;
+}
+.prediction_num div:nth-child(even){
+    background-color: #ff0000;
+    color: #ff0000;
+}
+.prediction_num div::before{
+    content: '';
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    z-index: -1;
+    margin: auto;
+    background: linear-gradient(#fff, #eee) ;
+    box-shadow: 4px 4px 10px inset #757789;
+  -webkit-box-shadow: 4px 4px 10px inset #757789;
+}
+
+/* TABLE */
+
+.GameRecord__C {
+    width: calc(100% - 0em);
+    text-align: center;
+    font-size: 1em;
+}
+
+.GameRecord__C-head {
+    height: 2em;
+    text-align: center;
+    background: #8338ec;
+    border-radius: .3em .3em 0 0;
+    font-weight: 500;
+    font-size: 1.234em;
+    color: #fff;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 0.2em 0.4em,rgba(45, 35, 66, 0.15)
+     0 0.7em 1.3em  -0.19em,#6512da 0 -0.19em 0 inset;
+}
+.GameRecord__C-body::-webkit-scrollbar{
+    display: none;
+
+}
+.GameRecord__C-body {
+    line-height: 2.2em;
+    height: calc(100vh - 27.7em);
+    overflow-y: auto;
+}
+
+.GameRecord__C-body-redC {
+    color: #fd565c;
+    width: 100%;
+    height: 100%;
+    background-size: .6em;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.GameRecord__C-body .numcenter {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center
+}
+
+.GameRecord__C-body-num {
+    height: .4em;
+    line-height: .8em;
+    width: .8em;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.GameRecord__C-body .mixedColor0 {
+    /* background: -webkit-linear-gradient(top,#40ad72 50.96%,#b659fe 50.97%);
+    background: linear-gradient(180deg,#40ad72 50.96%,#b659fe 50.97%); */
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; */
+    color: #8338ec;
+
+}
+
+.GameRecord__C-body .mixedColor5 {
+    background: -webkit-linear-gradient(top,#40ad72 51.48%,#8338ec 51.49%);
+    background: linear-gradient(180deg,#40ad72 51.48%,#8338ec 51.49%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.GameRecord__C-body .greenColor {
+    color: #40ad72
+}
+
+.GameRecord__C-body .defaultColor {
+    color: #fd565c;
+}
+
+.van-row {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: .2em .8em;
+}
+.GameRecord__C-body>div {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+
+.GameRecord__C-body .greenColor {
+    color: #67cd02;
+}
+
+.GameRecord__C-body .defaultColor {
+    color: #ff0000
+}
+
+.GameRecord__C-body-greenC {
+    color: #67cd02;
+}
+
+/* .GameRecord__C-body-empty {
+    height: 5.33333em;
+} */
+
+
+.GameRecord__C-body>div+div {
+    border-top: .01333em solid #5a5858;
+}
+
+.GameRecord__C-origin div{
+ margin: .3em 0;
+}
+
+
+.GameRecord__C-origin-I {
+    width:  .5rem;
+    height: .5rem;
+    border-radius: 50%
+}
+
+.GameRecord__C-origin-I.violet {
+    background-color: #8338ec;
+}
+
+.GameRecord__C-origin-I.red {
+    background: #ff0000;
+}
+
+.GameRecord__C-origin-I.green {
+    background: #67cd02;
+}
+
+.GameRecord__C-foot {
+    height:2.8em;
+    background: rgba(255,255,255,0.1);
+    padding: 0 1em;
+    margin-top: .48em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 0 0 .3em .3em;
+    font-size: 1em;
+
+}
+.GameRecord__C-foot i{
+    font-size: 1.1em;
+    
+}
+.GameRecord__C-foot-previous,.GameRecord__C-foot-next {
+    width: 2em;
+    height: 2em;
+    border-radius: .13333em;
+    background: #8338ec;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.GameRecord__C-foot-previous.disabled,.GameRecord__C-foot-next.disabled {
+    background: #ffff;
+    pointer-events: none;
+    color: #333;
+}
+.GameRecord__C-foot-page{
+    color: #fff;
+}
+
+

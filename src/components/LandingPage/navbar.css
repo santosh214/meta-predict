@@ -1,0 +1,32 @@
+.navbar{
+    border-radius: 18px;
+    color: #000 !important;
+    /* background-color: #fff; */
+    /* border: 1px solid #f58634; */
+    border: 1px solid var(--yellow-color);
+}
+
+a{
+    /* color: var(--logo-color) !important; */
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    font-family: 'Barlow';
+}
+.wallet{
+    /* color: #000 !important; */
+    /* background-color: var(--logo-color) !important; */
+    padding: 0.7rem 1rem ;
+    border-radius: 12px;
+    }
+
+ 
+
+
+
+@media (max-width: 768px) {
+
+    a{
+        width: max-content;
+        padding: 0.5rem 1rem !important;
+    }
+}

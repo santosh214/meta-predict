@@ -1,0 +1,852 @@
+@media screen and (max-width: 480px) {
+    .GameList__C {
+        margin: 0 .5em 1em .5em !important;
+    }
+
+    .prediction_num,
+    .main_TabContent {
+        margin: 0 .5em 1em .5em;
+
+    }
+
+    .coin_Box {
+        flex-direction: column;
+        width: 100% !important;
+        gap: 3em;
+        /* padding: 1.5em 0; */
+    }
+
+    .K3B__C-bettingList {
+        width: 100% !important;
+        padding: .5em 0em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* column-gap: 4em; */
+        /* margin-bottom: 2em; */
+    }
+
+    .K3TL__C {
+        width: 100% !important;
+        padding: .5em .5em !important;
+    }
+
+    .K3B__C-bettingList>div {
+        height: 4em !important;
+    }
+
+    .K3B__C-bettingList>div .K3B__C-odds-rate {
+        font-size: 1.2em !important;
+    }
+
+    .K3TL__C-l1,
+    .K3TL__C-l2 {
+        font-size: 1.2em !important;
+    }
+
+    .K3TL__C-l3 {
+        height: 8em !important;
+        margin-top: 1.5em !important;
+        padding: .8em !important;
+    }
+
+    .K3TL__C-l3 .box>div {
+        height: 10.6em !important;
+        background-size: 45% !important;
+    }
+    .K3B__C-mark{
+        width: 100%!important;
+        height: calc(100% - 61%)!important;
+
+    }
+}
+
+/* Animated timer button start */
+
+
+
+.K3B__C {
+    margin: auto;
+    border-radius: 0 0 .2em .2em;
+    position: relative;
+}
+
+.K3B__C-mark {
+    width: 50%;
+    height: calc(100% - 26%);
+    background: rgba(0,0,0,.8);
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    color: #fff;
+    border-radius: .8em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.K3B__C-mark> div {
+    display: flex;
+    border-radius: .1em;
+    padding: 0 .1em;
+    font-weight: 700;
+    font-size: 6em;
+    justify-content: space-between;
+    gap: 1em;
+    background: linear-gradient(#fd932c,#e6d915);
+}
+
+.K3B__C-mark>div+div {
+    margin-left: .2em;
+}
+
+/* Animated timer button end  */
+
+
+
+
+
+.GameList__C {
+    height: 6.5em;
+    background: #343741;
+    border-radius: .5em;
+    box-shadow: 0 0.4em 0 0 #393838b3;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin-bottom: 1.5em;
+}
+
+.GameList__C-item {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    /* padding: .2em 0; */
+
+}
+
+.GameList__C-item>.box {
+    height: 100%;
+    font-size: 1em;
+    /* padding: .4em 0; */
+    color: #b2b2b2;
+    background: url('../../assets/images/shape/k3-time.png') top no-repeat;
+    background-size: 22% ;
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+.GameList__C-item.active{
+    background: -webkit-linear-gradient(#05fd6c, transparent);
+    background: linear-gradient(#05fd6c, transparent);
+    box-shadow: 20px 20px 60px #6e6d6d1e, inset -20px -20px 60px #ffffff35;
+    /* box-shadow: 20px 20px 60px #6e6d6d25, inset -20px -20px 60px #ffffff40; */
+    border-radius: .26667em;
+}
+
+.GameList__C-item>div p {
+    margin-top: -3.2em;
+}
+
+/* .GameList__C-item:nth-child(1) {
+    background: -webkit-linear-gradient(#05fd6c, transparent);
+    background: linear-gradient(#05fd6c, transparent);
+    box-shadow: 20px 20px 60px #6e6d6d1e, inset -20px -20px 60px #ffffff35;
+    box-shadow: 20px 20px 60px #6e6d6d25, inset -20px -20px 60px #ffffff40;
+    border-radius: .26667em;
+    filter: drop-shadow(0 0 5px #05fd6c);
+} */
+
+.GameList__C-item.active .box {
+    -webkit-animation: shake-top 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: shake-top 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+.GameList__C-item:nth-child(2).active {
+    background: -webkit-linear-gradient(#ff0a54, transparent);
+    background: linear-gradient(#ff0a54, transparent);
+    box-shadow: 20px 20px 60px #6e6d6d25, inset -20px -20px 60px #ffffff40;
+    border-radius: .26667em;
+    /* filter: drop-shadow(0 0 5px #ff0a54); */
+
+}
+
+.GameList__C-item:nth-child(3).active {
+    background: -webkit-linear-gradient(#18dcff, transparent);
+    background: linear-gradient(#18dcff, transparent);
+    box-shadow: 20px 20px 60px #6e6d6d25, inset -20px -20px 60px #ffffff40;
+    border-radius: .26667em;
+    /* filter: drop-shadow(0 0 5px #18dcff); */
+
+
+}
+
+.GameList__C-item:nth-child(4).active {
+    background: -webkit-linear-gradient(#7b2cbf, transparent);
+    background: linear-gradient(#7b2cbf, transparent);
+    box-shadow: 20px 20px 60px #6e6d6d25, inset -20px -20px 60px #ffffff40;
+    border-radius: .26667em;
+    /* filter: drop-shadow(0 0 5px #7b2cbf);v  */
+
+}
+
+
+.GameList__C-item.active>div {
+    color: #fff;
+    background-image: url("../../assets/images/shape/k3-time.png") top no-repeat;
+}
+
+
+.coin_Box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1em;
+    background-color: #343741;
+    padding: 1em 0;
+    border-radius: .8em;
+    overflow: hidden;
+}
+
+
+/* PLAY NUMBER BALL */
+
+.K3B__C-bettingList {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    row-gap: 1.5em;
+
+}
+
+.K3B__C-bettingList>div {
+    width: calc((100% - .6em)/4);
+    height: auto;
+    border-radius: 1em;
+    text-align: center;
+    color: #f2f2f2;
+    height: 3.8em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.K3B__C-bettingList>div .ball {
+    width: 3.5em;
+    height: 3.5em;
+    line-height: 3.5em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+.K3B__C-bettingList>div .ball.rball {
+    background: url('../../assets/images/ball/red_coin_num.png') no-repeat center center;
+    background-size: cover;
+    background-color: transparent;
+}
+
+.K3B__C-bettingList>div .ball.rball .K3B__C-odds-bet {
+    /* background: -webkit-linear-gradient(top, #f92003 0%, #a31503 68.18%);
+    background: linear-gradient(180deg, #f92003 0%, #a31503 68.18%); */
+    background: -webkit-linear-gradient(top, #ca1902 0%, #861102 68.18%);
+    background: linear-gradient(180deg, #ca1902 0%, #861102 68.18%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.K3B__C-bettingList>div .ball.gball {
+    background: url('../../assets/images/ball/green_coin_num.png') no-repeat center center;
+    background-size: cover
+}
+
+.K3B__C-bettingList>div .ball.gball .K3B__C-odds-bet {
+    background: -webkit-linear-gradient(top, #018b3f 0%, #01883e 68.18%);
+    background: linear-gradient(180deg, #018b3f 0%, #01883e 68.18%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.K3B__C-bettingList>div .ball .K3B__C-odds-bet {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+
+.K3B__C-bettingList>div .K3B__C-odds-bet {
+    font-size: 1em;
+}
+
+.K3B__C-bettingList>div .K3B__C-odds-rate {
+    font-size: .9em;
+}
+
+
+/* SMALL, BIG, ODD AND EVEN BUTTONS */
+
+.box_Buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box_Buttons .num {
+    height: 3em;
+    padding: 1.7em 3em;
+    border-radius: .5em;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    background: no-repeat center center;
+    background-color: transparent;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .4s 1;
+    color: #fff;
+    font-weight: 500;
+}
+
+.box_Buttons .num:active {
+    transform: scale(0.9);
+    transition: transform .4s 1;
+
+}
+.box_Buttons .numA {
+    background: url('../../assets/images/ball/button-1.png');
+    background-size: cover;
+}
+.box_Buttons .numB {
+    background: url('../../assets/images/ball/button-2.png');
+    background-size: cover;
+}
+.box_Buttons .numC {
+    background: url('../../assets/images/ball/button-3.png');
+    background-size: cover;
+}
+.box_Buttons .numD {
+    background: url('../../assets/images/ball/button-4.png');
+    background-size: cover;
+}
+
+
+
+.K3TL__C {
+    /* width: calc(100% - .69333rem); */
+    /* margin: 1em auto 0; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 1em center;
+    color: #fff;
+    /* padding: 0em .2rem .2em; */
+    padding: 0em  1em .2em .2em;
+    border-radius: .2rem .2em 0 0;
+    width: 50%;
+}
+
+.K3TL__C-rule {
+    height: 2.3em;
+    padding: 0 1.3em;
+    font-size: 1em;
+    text-align: center;
+    border: .1em solid #fe474d;
+    border-radius: .8rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    color: #fe474d;
+    margin-left: 1.4em;
+}
+
+.K3TL__C-rule:before {
+    content: "";
+    display: block;
+    height: 1.3em;
+    width: 1.3em;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAS1BMVEUAAAD/R039Rkr+Rkz/R03/RUr+Rk37Rkz8R0z/R03/QFD9R03/QED/R0z9Rkz8Rkz/R03+R0z6RUr+R0z/Rkz9R0v6RVD/R07+R02y01sqAAAAGHRSTlMA32CAn2DvQCCvEHAQz6BQv78wkFBwMG/FLhcYAAAA5UlEQVQ4y9WTya7DIAxFr01qpoRMr33+/y8tUhChoeqqm54FgznSBcngezjLDXa7HP+LUkveGjQY4YAXAkvECTE6oqCy6QiMl9igrq5tllmU7EKFIR+KrcJM2b9j15ULkwforwo3gsspN62lOGWBWwHkmYT8cCCmE9xKJrApzOiFZRrGKjDeRkxSEjzFUzgvOSuflasQJI6+eebQRbAq2USF1XUCwiOgoRcyvy+MZvGlYv2yu5d+2ASOppjUHB28RyIHtVUI4iXl2aotAxINbe7s70f7k3PlQ7Cf8YakkvAR+8C3eQLCmgiaNUiYZAAAAABJRU5ErkJggg==);
+    background-repeat: no-repeat;
+    background-size: 1.3em;
+    background-position: center;
+}
+
+.K3TL__C-l1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 1.9em;
+    color: #fff;
+    font-size: .7em;
+}
+
+.K3TL__C-l1 .left {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 1.6em;
+}
+
+.K3TL__C-l1>div:not(.left) {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+}
+
+.K3TL__C-l2 {
+    height: 1.8em;
+    line-height: 1.8em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff;
+}
+
+.K3TL__C-l3 {
+    height: 5em;
+    margin-top: 1em;
+    background: #00b977;
+    border-radius: .5em;
+    position: relative;
+    padding: .5em;
+}
+
+.K3TL__C-l3:after,
+.K3TL__C-l3:before {
+    content: "";
+    display: block;
+    width: .2em;
+    height: .6em;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.K3TL__C-l3:before {
+    background: #008b59;
+    border-radius: .1em 0 0 .1em;
+    left: -.1rem;
+}
+
+.K3TL__C-l3:after {
+    background: #008b59;
+    border-radius: 0 .1em .1rem 0;
+    right: -.1rem;
+}
+
+.K3TL__C-l3 .box {
+    background: #003c26;
+    border-radius: .1em;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: .1em;
+}
+
+.K3TL__C-l3 .box:after,
+.K3TL__C-l3 .box:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .2em solid transparent;
+    border-bottom: .2em solid transparent;
+    content: "";
+    z-index: 3;
+}
+
+.K3TL__C-l3 .box:before {
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-right: .5em solid transparent;
+    border-left: .5em solid #00b977;
+}
+
+.K3TL__C-l3 .box:after {
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-left: .5em solid transparent;
+    border-right: .5em solid #00b977;
+}
+
+.K3TL__C-l3 .box>div {
+    width: calc((100% - .4em) / 3);
+    height: 3.6em;
+    background-color: #333;
+    border-radius: .1em;
+    position: relative;
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+.K3TL__C-l3 .box>div:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    z-index: 2;
+    box-shadow: inset 0 -.1em .1em #0000004d, inset 0 .1em .1em #0000004d;
+}
+
+.K3TL__C-l3 .num1 {
+    background-image: url('../../assets/images/ball/one-dice.png');
+}
+
+.K3TL__C-l3 .num2 {
+    background-image: url('../../assets/images/ball/two-dice.png');
+}
+
+.K3TL__C-l3 .num3 {
+    background-image: url('../../assets/images/ball/three-dice.png');
+}
+
+.K3TL__C-l3 .num4 {
+    background-image: url('../assets/img/shape/four-dice.png');
+}
+
+.K3TL__C-l3 .num5 {
+    background-image: url('../assets/img/shape/five-dice.png');
+}
+
+.K3TL__C-l3 .num6 {
+    background-image: url('../assets/img/shape/six-dice.png');
+}
+
+.K3TL__C-l3>div,
+.K3TL__C-l3>p {
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align: center;
+    font-weight: 700;
+    font-size: .64rem;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.K3TL__C-time {
+    height: 2em;
+    line-height: 2em;
+    right: .3em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    background: transparent;
+}
+
+.K3TL__C-time>div {
+    /* background: #efeff4; */
+    border-radius: .1em;
+    color: #00b977;
+    font-weight: 700;
+    font-size: 1.4em;
+    text-align: center;
+    padding: 0 .4em;
+    /* border: .3em solid #5f63707c; */
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: #5f63707c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.K3TL__C-time>div.notime {
+    background: #5f63707c;
+}
+
+.K3TL__C-time>div+div {
+    margin-left: .12rem;
+
+}
+
+
+/* RIGHT BOX SIZES */
+
+.K3B__C-betting2 {
+    margin-top: .2em
+}
+
+.K3B__C-betting2-tip1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: .4em;
+    font-size: .9em;
+    /* line-height: 1em; */
+    color: #545454;
+}
+
+.K3B__C-betting2-tip1 .icon {
+    margin-left: .1em
+}
+
+.K3B__C-betting2-line1,
+.K3B__C-betting2-line2,
+.K3B__C-betting2-line3 {
+    height: 1.8em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin: .5em 0;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between
+}
+
+.K3B__C-betting2-line1.mb30,
+.K3B__C-betting2-line2.mb30,
+.K3B__C-betting2-line3.mb30 {
+    margin-bottom: .4rem
+}
+
+.K3B__C-betting2-line1>div,
+.K3B__C-betting2-line2>div,
+.K3B__C-betting2-line3>div {
+    /* width: calc((100% - 1.33333rem) / 6); */
+    height: 3em;
+    line-height: .93em;
+    color: #fff;
+    text-align: center;
+    border-radius: .1rem;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 2em;
+
+}
+
+.K3B__C-betting2-line1>div {
+    background: rgba(182, 89, 254, .5);
+    font-size: .37333rem
+}
+
+.K3B__C-betting2-line1>div.active {
+    background: #b659fe;
+    position: relative
+}
+
+.K3B__C-betting2-line1>div.active:after {
+    content: "";
+    display: block;
+    width: .42667rem;
+    height: .42667rem;
+    /* background-image: url(/assets/svg/subtract-ca63ef68.svg); */
+    background-size: .42667rem;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+
+.K3B__C-betting2-line2>div {
+    background: #fb9494;
+    font-size: .37333rem
+}
+
+.K3B__C-betting2-line2>div.active {
+    background: #fb4e4e;
+    position: relative
+}
+
+.K3B__C-betting2-line2>div.active:after {
+    content: "";
+    display: block;
+    width: .42667rem;
+    height: .42667rem;
+    /* background-image: url(/assets/svg/subtract-ca63ef68.svg); */
+    background-size: .42667rem;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+
+.K3B__C-betting2-line3>div {
+    font-size: .37333rem;
+    background: rgba(64, 173, 114, .5)
+}
+
+.K3B__C-betting2-line3>div.active {
+    background: #40ad72;
+    position: relative
+}
+
+.K3B__C-betting2-line3>div.active:after {
+    content: "";
+    display: block;
+    width: .42667rem;
+    height: .42667rem;
+    /* background-image: url(/assets/svg/subtract-ca63ef68.svg); */
+    background-size: .42667rem;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+
+/* =================== ANIMATION SHAKE =============== */
+
+/**
+ * ----------------------------------------
+ * animation shake-top
+ * ----------------------------------------
+ */
+@-webkit-keyframes shake-top {
+
+    0%,
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+    }
+
+    10% {
+        -webkit-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
+
+    20%,
+    40%,
+    60% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(-2deg);
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        -webkit-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes shake-top {
+
+    0%,
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+    }
+
+    10% {
+        -webkit-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
+
+    20%,
+    40%,
+    60% {
+        -webkit-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(-2deg);
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        -webkit-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
+}
+
+/* =================== ANIMATION SHAKE END =============== */

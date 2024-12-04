@@ -1,0 +1,34 @@
+<svg width="42" height="29" viewBox="0 0 42 29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="219.142%" y1="-16.166%" x2="-57.539%" y2="107.66%" id="y7te8q1jmc">
+            <stop stop-color="#D99E38" offset="0%"/>
+            <stop stop-color="#FFF585" offset="14.8%"/>
+            <stop stop-color="#EBBC53" offset="26.84%"/>
+            <stop stop-color="#FFF28F" offset="73.92%"/>
+            <stop stop-color="#F9E581" offset="74.68%"/>
+            <stop stop-color="#EDC964" offset="76.59%"/>
+            <stop stop-color="#E4B54F" offset="78.48%"/>
+            <stop stop-color="#DFA942" offset="80.33%"/>
+            <stop stop-color="#DDA53E" offset="82.09%"/>
+            <stop stop-color="#E1AC43" offset="84.58%"/>
+            <stop stop-color="#EEBF50" offset="88.16%"/>
+            <stop stop-color="#FBD35E" offset="91.03%"/>
+            <stop stop-color="#F9D15D" offset="94.26%"/>
+            <stop stop-color="#F4CA58" offset="95.67%"/>
+            <stop stop-color="#EABD50" offset="96.73%"/>
+            <stop stop-color="#DCAB45" offset="97.61%"/>
+            <stop stop-color="#C99437" offset="98.38%"/>
+            <stop stop-color="#B47926" offset="100%"/>
+        </linearGradient>
+        <filter x="-13.1%" y="-12.1%" width="126.2%" height="137.9%" filterUnits="objectBoundingBox" id="q9l1wr4o4b">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1"/>
+        </filter>
+        <path d="M3 0h36a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3h-3l-5.5 5v-5H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3z" id="12so6622ba"/>
+    </defs>
+    <g fill-rule="nonzero" fill="none">
+        <use fill="#000" filter="url(#q9l1wr4o4b)" xlink:href="#12so6622ba"/>
+        <use fill="url(#y7te8q1jmc)" xlink:href="#12so6622ba"/>
+    </g>
+</svg>

@@ -1,0 +1,222 @@
+.pools_return_wrap {
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.pools_side {
+    padding: 0 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 42%;
+}
+.mobile_up {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+.mobile_up .group_result {
+    border-radius: 0 0 0.75em 0.75em;
+    background-color: rgba(24, 25, 31, .7);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s;
+    color: #787878;
+    width: 40vw;
+}
+.mobile_up .group_result.win {
+    color: #92e204;
+}
+.mobile_up .group_result.lose {
+    color: #ff0400;
+}
+.mobile_up .group_result .group_result_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.4em;
+}
+.mobile_up .group_result .group_result_mobile img {
+    margin-bottom: -0.6em;
+}
+@keyframes grow_pulse {
+    0% {
+        transform: scale(1);
+   }
+    50% {
+        transform: scale(1.15);
+   }
+    100% {
+        transform: scale(1);
+   }
+}
+.mobile_up .group_result span {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 900;
+    animation: grow_pulse 0.9s infinite;
+}
+.mobile_up .group_result.visible {
+    opacity: 1;
+}
+.mobile_down {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+}
+.mobile_down .group_result {
+    border-radius: 0 0 0.75em 0.75em;
+    background-color: rgba(24, 25, 31, .7);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s;
+    color: #787878;
+    width: 40vw;
+}
+.mobile_down .group_result.win {
+    color: #92e204;
+}
+.mobile_down .group_result.lose {
+    color: #ff0400;
+}
+.mobile_down .group_result .group_result_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.4em;
+}
+.mobile_down .group_result .group_result_mobile img {
+    margin-bottom: -0.6em;
+}
+@keyframes grow_pulse {
+    0% {
+        transform: scale(1);
+   }
+    50% {
+        transform: scale(1.15);
+   }
+    100% {
+        transform: scale(1);
+   }
+}
+.mobile_down .group_result span {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 900;
+    animation: grow_pulse 0.9s infinite;
+}
+.mobile_down .group_result.visible {
+    opacity: 1;
+}
+.pool_dir_down {
+    text-align: right !important;
+}
+.pool_top_up {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 90%;
+    height: 2.4em;
+    padding: 0.55em 0 0.55em 0;
+}
+.pool_players {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.pool_top_down div {
+    display: flex;
+    flex-direction: row;
+}
+.pool_top_down {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 90%;
+    height: 2.4em;
+    padding: 0.55em 0;
+}
+.pool_return_amt_up {
+    color: #92e204 ;
+    font-size: 1.8em;
+    font-weight: 500;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+    line-height: 0.95em;
+}
+.pool_return_amt_down {
+    color: #ff0400;
+    font-size: 1.8em;
+    font-weight: 500;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+    line-height: 0.95em;
+}
+.pool_players .players {
+    color: #f4d56f;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.045em;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+    margin-bottom: -0.36em;
+    margin-left: 0.35em;
+}
+.pool_players_amt {
+    color: #f4d56f;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-right: 1.1em;
+    letter-spacing: 0.07em;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+.pool_return_desc {
+    color: #f4d56f;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.045em;
+    text-align: left;
+}
+@media screen and (max-width: 480px) {
+    .pools_side .pool_players .players {
+        font-size: 1.4em;
+        margin-bottom: 0;
+   }
+}
+
+
+.trade_taken_bet_mobile_up.show{
+    display: block!important;
+}
+.trade_taken_bet_mobile_up.hide{
+    display: none!important;
+}

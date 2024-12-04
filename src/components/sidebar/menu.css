@@ -1,0 +1,121 @@
+.site_menu_popup_wrap{
+    background: rgba(0,0,0,0.6);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 25;
+    justify-content: center;
+    padding-top: 6%;
+    display: flex;
+}
+
+.site_menu_popup_wrap_mobile{
+    z-index: 10000;
+    width: 100vh; height: 100vw;
+}
+
+.site_menu_popup_btn{
+    position: relative; bottom: 0;
+    display: flex; align-items: center; justify-content: center;
+    width: 15%; height: 44vw;
+    padding: 0;
+    margin: 0;
+    font-size: 1.3em;
+}
+.site_menu_popup_btn_content{
+    height: 30%;
+    display: flex; flex-direction: row; align-items: center; 
+    transform: rotate(90deg);
+}
+
+.site_menu_popup{
+    position: absolute;
+    z-index: 99;
+    top: 10.5vw;
+    right: 34%;
+    display: flex;
+    justify-content: center;
+    width: 16em;
+    height: 30em;
+    height: 35vw;
+    max-height: 53vh;
+    background: #17191E;
+    border: 0.1em solid #817344;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+.site_menu_popup_bg{
+    width: 16em;
+    height: 30em;
+    /* width: 27.1em; */
+    /* height: 30.78em; */
+    display: none;
+}
+.site_menu_popup_content_box{
+    position: absolute;
+    top: 0.7em;
+    bottom: 0.7em;
+    /* width: 46%; */
+    width: 98%;
+    /* height: 94%; */
+    overflow-y: scroll;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    overflow-x: hidden;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.site_menu_popup_content_btn{
+    padding-left: 1.5vw;
+    height: 4.2em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 4vw;
+}
+.site_menu_popup_content_btn:hover{
+    /* opacity: .8; */
+    scale: 1.08;
+    background: rgba(0,0,0,.9);
+}
+.site_menu_content_flag{
+    margin-right: 2vw;
+    height: auto;
+    width: 2.8vw;
+}
+.site_menu_content_lang{
+    font-family: 'SF UI Display', sans-serif;
+    color: #fff;
+    text-align: left;
+    font-weight: 300;
+    font-size: 1.3vw;
+}
+
+
+::-webkit-scrollbar {
+    width: .6em;
+}
+  /* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border: solid .1em #979797;
+    background-color: #d8d8d8;
+    width: .6em; height: 9.6em;
+    border-radius: 3em;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    opacity: .9;
+}

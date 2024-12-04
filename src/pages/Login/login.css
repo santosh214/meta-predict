@@ -1,0 +1,20 @@
+.myLoginCard{
+    border: 1px solid var(--yellow-color);
+    background-color: transparent !important;
+}
+
+.myButton{
+    background-color:  var(--yellow-color);
+    color: black;
+    border: none;
+}
+.myButton:hover{
+    background-color:  #f4d56fb0;
+    color: black;
+
+}
+
+.registerText{
+    color: var(--yellow-color);
+    font-size: 1.3vw !important;
+}

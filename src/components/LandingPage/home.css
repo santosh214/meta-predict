@@ -1,0 +1,85 @@
+.headingTextContainer {
+    padding-top: 23vh;
+    height: 90vh;
+  }
+  .metaPredict {
+    font-family: "Barlow";
+    font-size: 6em;
+    font-weight: 900;
+    span {
+      color: var(--logo-color);
+    }
+  }
+  
+  
+  .infoText{
+      text-align: center;
+  }
+  
+  
+  .myborder{
+      width: 80%;                /* Controls the width of the element */
+      margin: 0 auto;            /* Centers the element horizontally */
+      padding: 10px;             /* Optional: Adds space inside the element */
+      border-top: 2px solid black;  /* Border on top */
+      border-bottom: 2px solid var(--logo-color);  
+  }
+  
+  .whyChooseContainer{
+      h1{
+          font-weight: 800;
+      }
+      li{
+          font-size: 1.3rem;
+          span{
+              font-weight: 600;
+              color: var(--logo-color);
+              border-bottom: 1px solid #fff;
+          }
+      }
+      p{
+          padding-top: 0.2rem;
+          font-size: 1.1rem;
+      }
+  }
+  
+  .howToGetStarted{
+   
+    strong {
+        color: var(--logo-color);
+    }
+    li {
+        border-top: 1px solid white;
+        background-color: transparent;
+        color: var(--logo-color);
+    }
+  }
+
+
+  .community{
+    h1{
+        font-weight: 800;
+    }
+    img{
+        height: 50%;
+    }
+    .myImg{
+        height: 10% !important;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+      .headingTextContainer {
+        }
+        .metaPredict {
+          font-family: "Barlow";
+          font-size: 1.7rem;
+        }
+        h3{
+          font-size: 1rem;
+        }
+        h5{
+          font-size: 0.9rem;
+        }
+  
+  }
