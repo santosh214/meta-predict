@@ -2,6 +2,7 @@ import Typewriter from "typewriter-effect";
 import Navbar from "./Navbar";
 import "./home.css";
 import bitcoinMetaPredict from "../../assets/home/bitcoin.jpeg";
+import why from "../../assets/home/why.jpeg";
 import How from "../../assets/home/how.png";
 import Community from "../../assets/home/community.png";
 import Footer from "../../pages/component/Footer/Footer";
@@ -45,10 +46,10 @@ export default function LandingPage() {
       <div className="myborder"></div>
       <div className="container-fluid py-0 py-md-5 mt-0 mt-md-5">
         <div className="row pt-5">
-          <div className="col-12 col-md-6 d-flex justify-content-center ">
-            <img src={bitcoinMetaPredict} alt="bitcoin" className="img-fluid" />
+          <div className="col-12 col-md-6 d-flex justify-content-center " data-aos='fade-in'>
+            <img src={why} alt="bitcoin" className="img-fluid" />
           </div>
-          <div className="col-12 col-md-6 whyChooseContainer">
+          <div className="col-12 col-md-6 whyChooseContainer" data-aos='fade-in' data-aos-duration='2000'>
             <h1 className="py-2">Why Choose Metapredict?</h1>
             <ol>
               <li>
@@ -102,7 +103,7 @@ export default function LandingPage() {
       {/* how meta predict works */}
       <div className="container-fluid py-0 py-md-5 mt-0 mt-md-5">
         <div className="row pt-5">
-          <div className="col-12 col-md-6 whyChooseContainer px-md-5 d-grid align-items-center">
+          <div className="col-12 col-md-6 whyChooseContainer px-md-5 d-grid align-items-center" data-aos='fade-in'>
             <h1 className="py-2">How Metapredict Works ?</h1>
             <ol>
               <li>
@@ -141,7 +142,7 @@ export default function LandingPage() {
           {/* <div className="col-12 col-md-6 d-flex justify-content-center ">
             <img src={How} alt="bitcoin" className="img-fluid" />
           </div> */}
-          <div className="col-12 col-md-6 d-flex justify-content-center  align-items-center">
+          <div className="col-12 col-md-6 d-flex justify-content-center  align-items-center" data-aos='fade-in'>
             <img src={How} alt="bitcoin" className="img-fluid w-75 " />
           </div>
 
@@ -152,7 +153,7 @@ export default function LandingPage() {
 
       {/* how to get started */}
       <section className="howToGetStarted pb-5">
-        <div className="container mt-5 text-light">
+        <div className="container mt-5 text-light" data-aos='fade-in'>
           <h2 className="text-center mb-4">How to Get Started</h2>
           <ol className="list-group list-group-numbered">
             <li className="list-group-item  ">
@@ -179,7 +180,7 @@ export default function LandingPage() {
 
       <div className="container-fluid px-md-5  pt-2 text-light community">
         <div className="row">
-          <div className="col-12 col-md-6 pt-5 d-grid align-items-center">
+          <div className="col-12 col-md-6 pt-5 d-grid align-items-center" data-aos='fade-in'>
             <div>
 
             
@@ -194,7 +195,7 @@ export default function LandingPage() {
             </div>
 
           </div>
-          <div className="col-12 col-md-6 d-flex justify-content-center  align-items-center">
+          <div className="col-12 col-md-6 d-flex justify-content-center  align-items-center" data-aos='fade-in'>
             <img src={Community} alt="bitcoin" className="img-fluid " />
           </div>
         </div>

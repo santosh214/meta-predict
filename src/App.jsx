@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './components/header/Header'
 import LeftBox from './components/leftbox/LeftBox'
 import RightBox from './components/rightbox/RightBox'
@@ -21,6 +21,8 @@ import { ToastContainer } from 'react-toastify';
 import AffiliateIncomeHistory from './components/userprofile/AffiliateIncomeHistory'
 import LandingPage from './components/LandingPage/LandingPage'
 import Navbar from './components/LandingPage/Navbar'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const apiKey = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
 const injected = injectedModule();
@@ -64,7 +66,14 @@ const web3Onboard = init({
 function App() {
   const [amount, setAmount] = useState(0.1)
 
-
+  useEffect(() => {
+    AOS.init({
+      disable: "phone",
+      duration: 900,
+      easing: "ease-out-cubic",
+      delay:250
+    });
+  }, []);
   return (
     <Web3OnboardProvider web3Onboard={web3Onboard}>
       <ToastContainer />
