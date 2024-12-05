@@ -102,7 +102,7 @@ export default function LandingPage() {
       {/* how meta predict works */}
       <div className="container-fluid py-0 py-md-5 mt-0 mt-md-5">
         <div className="row pt-5">
-          <div className="col-12 col-md-6 whyChooseContainer px-5 d-grid align-items-center">
+          <div className="col-12 col-md-6 whyChooseContainer px-md-5 d-grid align-items-center">
             <h1 className="py-2">How Metapredict Works ?</h1>
             <ol>
               <li>
@@ -177,7 +177,7 @@ export default function LandingPage() {
       <div className="myborder"></div>
 
 
-      <div className="container-fluid px-5  pt-2 text-light community">
+      <div className="container-fluid px-md-5  pt-2 text-light community">
         <div className="row">
           <div className="col-12 col-md-6 pt-5 d-grid align-items-center">
             <div>
