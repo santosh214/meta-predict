@@ -20,6 +20,7 @@ const LeftBox = ({amount, setAmount}) => {
       finalPrice: "",
       initialPrice: "",
     });
+    
     const handleUp = async (direction=true) => {
       if(!wallet?.accounts[0].address){
           return toast.error("Connect wallet first")
@@ -63,68 +64,26 @@ const LeftBox = ({amount, setAmount}) => {
           }
         }
       };
-
-
-      const handlePools = async () => {
-        if (wallet) {
-          try {
-            // Call the 'pools' function of the contract
-            const contractInst = await prediction(wallet?.provider);
-            const poolsData = await contractInst.pools("0x123abc"); // Pass appropriate bytes value or address
-            // Pools data is an array of the outputs from the pools function
-            const [
-              created,
-              startPrice,
-              endPrice,
-              minBetAmount,
-              maxBetAmount,
-              poolBetsLimit,
-              upBetGroup,
-              downBetGroup,
-              roundStartTime,
-            ] = poolsData;
-            // const [ upBetGroup, downBetGroup] = poolsData;
-            // console.log("Round Start Time:", new Date(roundStartTime * 1000).toLocaleString()); // Convert timestamp to readable format
-            setUpBetGroupData(upBetGroup?.addresses);
-            console.log("🚀 ~ handlePools ~ upBetGroup?.addresses:", upBetGroup?.addresses)
-            // setDownBetGroupData(downBetGroup?.addresses);
-          } catch (error) {
-            console.error("Error fetching pools data:", error);
-          }
-        }
-      };
-      useEffect(() => {
-        const providerUrl = "https://testnet.ozonescan.org/rpc"; // Example: Infura, Alchemy
-        const provider = new ethers.providers.JsonRpcProvider(providerUrl);
-        // Replace with your contract's ABI and address
-        const contractAddress =import.meta.env.VITE_APP_PREDICTION_ADDRESS;
-        const contract = new ethers.Contract(
-          contractAddress,
-          predictContractInstByAddrContractAbi,
-          provider
-        );
-        contract.on("TradePlaced", (poolId) => {
-          // console.log("TradePlaced event detected:");
-          // console.log("Pool ID:", poolId);
-          setTimeout(() => {
-            handlePools();
-          }, 5000);
-        });
-    
-        return () => {
-          contract.removeAllListeners();
-        };
-      }, [wallet]);
+     
 
       useEffect(() => {
         const socket = new WebSocket("https://socket.metapredict.io/");
+        const socket2 = new WebSocket("https://socket.metapredict.io/trade");
+
         socket.onmessage = (event) => {
           const parsedData = JSON.parse(event.data);
           setPoolStatus({ ...parsedData });
         };
+        socket2.onmessage = (event) => {
+          const parsedData = JSON.parse(event.data);
+          if(parsedData?.data?.upSideUsers){
+            setUpBetGroupData(parsedData?.data?.upSideUsers )
+          }
+        };
     
         return () => {
           socket.close();
+          socket2.close()
         };
       }, []);
       const timeInMinutes = parseInt(poolStatus?.time?.split(":")[1]?.split(" ")[0]);
@@ -147,7 +106,7 @@ const LeftBox = ({amount, setAmount}) => {
                             </div>
                         </div>
                         <div className="player_num">
-                            <div className="det_title">PLAYERS</div>{upBetGroupData.length}
+                            <div className="det_title">PLAYERS</div>{upBetGroupData?.length}
                         </div>
                     </div>
                     <div className="players" side="up">

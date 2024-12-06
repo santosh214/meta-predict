@@ -60,64 +60,25 @@ const RightBox = ({amount, setAmount}) => {
       }
     };
 
-    const handlePools = async () => {
-        if (wallet) {
-          try {
-            // Call the 'pools' function of the contract
-            const contractInst = await prediction(wallet?.provider);
-            const poolsData = await contractInst.pools("0x123abc"); // Pass appropriate bytes value or address
-            // Pools data is an array of the outputs from the pools function
-            const [
-              created,
-              startPrice,
-              endPrice,
-              minBetAmount,
-              maxBetAmount,
-              poolBetsLimit,
-              upBetGroup,
-              downBetGroup,
-              roundStartTime,
-            ] = poolsData;
-            // console.log("Round Start Time:", new Date(roundStartTime * 1000).toLocaleString()); // Convert timestamp to readable format
-            setDownBetGroupData(downBetGroup?.addresses);
-            console.log("🚀 ~ handlePools ~ downBetGroup?.addresses:", downBetGroup?.addresses)
-          } catch (error) {
-            console.error("Error fetching pools data:", error);
-          }
-        }
-      };
-      useEffect(() => {
-        const providerUrl = "https://testnet.ozonescan.org/rpc"; // Example: Infura, Alchemy
-        const provider = new ethers.providers.JsonRpcProvider(providerUrl);
-        // Replace with your contract's ABI and address
-        const contractAddress =import.meta.env.VITE_APP_PREDICTION_ADDRESS;
-        const contract = new ethers.Contract(
-          contractAddress,
-          predictContractInstByAddrContractAbi,
-          provider
-        );
-        contract.on("TradePlaced", (poolId) => {
-          // console.log("TradePlaced event detected:");
-          // console.log("Pool ID:", poolId);
-          setTimeout(() => {
-            handlePools();
-          }, 5000);
-        });
-    
-        return () => {
-          contract.removeAllListeners();
-        };
-      }, [wallet]);
 
       useEffect(() => {
         const socket = new WebSocket("https://socket.metapredict.io/");
+        const socket2 = new WebSocket("https://socket.metapredict.io/trade");
+
         socket.onmessage = (event) => {
           const parsedData = JSON.parse(event.data);
           setPoolStatus({ ...parsedData });
         };
+        socket2.onmessage = (event) => {
+          const parsedData = JSON.parse(event.data);
+          if(parsedData?.data?.downSideUsers){
+            setDownBetGroupData(parsedData?.data?.downSideUsers )
+          }
+        };
     
         return () => {
           socket.close();
+          socket2.close();
         };
       }, []);  
           const timeInMinutes = parseInt(poolStatus?.time?.split(":")[1]?.split(" ")[0]);

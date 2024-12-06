@@ -1,56 +1,24 @@
-import React, {useContext, useEffect, useState} from 'react'
-import { poolMobile } from '../../assets/json-data/data-itemdown'
-import { SidebarContext } from '../sidebar/SidebarContext';
-
+import React, { useEffect, useState} from 'react'
 import './poolsReturn.css'
-import { predictContractInstByAddrContractAbi, prediction } from '../contract/prediction';
-import { useConnectWallet } from '@web3-onboard/react';
-import { ethers } from 'ethers';
+
 const MobilePoolDown = () => {
-  const { showmobilepool } = useContext(SidebarContext);
   const [downBetGroupData, setDownBetGroupData] = useState([]); // Store down bet group data
-  const [{ wallet }] = useConnectWallet();
 
 
-  const handlePools = async () => {
-    if (wallet) {
-      try {
-        // Call the 'pools' function of the contract
-        const contractInst = await prediction(wallet?.provider);
-        const poolsData = await contractInst.pools("0x123abc"); // Pass appropriate bytes value or address
-        // Pools data is an array of the outputs from the pools function
-        const [
-          downBetGroup,
-        ] = poolsData;
-        // console.log("Round Start Time:", new Date(roundStartTime * 1000).toLocaleString()); // Convert timestamp to readable format
-        setDownBetGroupData(downBetGroup?.addresses);
-      } catch (error) {
-        console.error("Error fetching pools data:", error);
-      }
-    }
-  };
   useEffect(() => {
-    const providerUrl = "https://testnet.ozonescan.org/rpc"; // Example: Infura, Alchemy
-    const provider = new ethers.providers.JsonRpcProvider(providerUrl);
-    // Replace with your contract's ABI and address
-    const contractAddress =import.meta.env.VITE_APP_PREDICTION_ADDRESS;
-    const contract = new ethers.Contract(
-      contractAddress,
-      predictContractInstByAddrContractAbi,
-      provider
-    );
-    contract.on("TradePlaced", (poolId) => {
-      // console.log("TradePlaced event detected:");
-      // console.log("Pool ID:", poolId);
-      setTimeout(() => {
-        handlePools();
-      }, 8000);
-    });
+    const socket2 = new WebSocket("https://socket.metapredict.io/trade");
+
+    socket2.onmessage = (event) => {
+      const parsedData = JSON.parse(event.data);
+      if(parsedData?.data?.downSideUsers){
+        setDownBetGroupData(parsedData?.data?.downSideUsers )
+      }
+    };
 
     return () => {
-      contract.removeAllListeners();
+      socket2.close();
     };
-  }, [wallet]);
+  }, []);  
 
   return (
     <>
