@@ -76,6 +76,7 @@ const LeftBox = ({amount, setAmount}) => {
         };
         socket2.onmessage = (event) => {
           const parsedData = JSON.parse(event.data);
+          console.log("🚀 ~ useEffect ~ parsedData:", parsedData)
           if(parsedData?.data?.upSideUsers){
             setUpBetGroupData(parsedData?.data?.upSideUsers )
           }
@@ -114,8 +115,9 @@ const LeftBox = ({amount, setAmount}) => {
                         {upBetGroupData?.length > 0
                         ? upBetGroupData.map((address) => (
                             <div className="avatar-container" key={address}>
+                              {console.log("aa",address)}
                               <img
-                                src="https://via.placeholder.com/40"
+                                src={address?.avatarUrl}
                                 alt="User Avatar"
                                 className="avatar"
                               />

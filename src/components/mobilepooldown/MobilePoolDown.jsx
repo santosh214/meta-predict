@@ -36,7 +36,7 @@ const MobilePoolDown = () => {
                         ? downBetGroupData.map((address) => (
                             <div className="trade_taken_bet_mobile_down" key={address}>
                               <img
-                                src="https://via.placeholder.com/40"
+                                src={address?.avatarUrl}
                                 alt="User Avatar"
                                 className="user_avatar"
                               />

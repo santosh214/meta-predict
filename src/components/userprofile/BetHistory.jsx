@@ -86,7 +86,7 @@ export default function IncomeHistory() {
           )}`
         )
         .then((res) => {
-          setBetHistory(res.data);
+          setBetHistory(res?.data?.reverse());
           // console.log("🚀 ~ axios.get ~ res:", res);
         });
     } catch (err) {

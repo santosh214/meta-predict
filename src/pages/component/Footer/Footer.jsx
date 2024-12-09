@@ -159,7 +159,7 @@ export default function Footer() {
                 </ul>
                             </div>
                         </div>
-                        <p className='text-center' >&#169; 2025 Metapredict, All Rights Reserved.
+                        <p className='text-center' >&#169; 2025 Metapredict, All Rights Reserved by <a href="https://metaozone.io" rel="noopener noreferrer" target='_blank'>MetaOzone</a> .
 
                         </p>
                     </footer>

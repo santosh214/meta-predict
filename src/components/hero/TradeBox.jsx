@@ -20,6 +20,7 @@ import { useConnectWallet } from '@web3-onboard/react'
 
 const TradeBox = ({amount, setAmount}) => {
     const [{ wallet }] = useConnectWallet();
+    const [isLoading, setIsLoading] = useState(true); // Add a loading state
 
     const { toggleMobilePool } = useContext(SidebarContext);
     const { showmobilepool } = useContext(SidebarContext);
@@ -44,6 +45,15 @@ const TradeBox = ({amount, setAmount}) => {
       }, []);
 
 
+      useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false); // Game loaded
+          }, 3000); 
+        return () => {
+          
+        }
+      }, [])
+      
       useEffect(() => {
         const providerUrl = "https://testnet.ozonescan.org/rpc"; // Example: Infura, Alchemy
         const provider = new ethers.providers.JsonRpcProvider(providerUrl);
@@ -83,7 +93,22 @@ const TradeBox = ({amount, setAmount}) => {
 
     return (
         <>
-
+        {isLoading ?
+        <div className="container" style={{
+            position:'absolute',
+            top:'40%',
+            right:'5%'
+        }}>
+            <div className="row">
+                <div className="col d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+  <span class="sr-only"></span>
+</div>
+                </div>
+            </div>
+        </div>
+        :
+<>
             <MobileHeaderPool  poolStatus={poolStatus}/>
             <div className="trade_center">
                 <div className="market">
@@ -234,6 +259,8 @@ const TradeBox = ({amount, setAmount}) => {
                 </div>
                 <InvestBox amount={amount} setAmount={setAmount} />
             </div>
+            </>
+            }
 
         </>
     )

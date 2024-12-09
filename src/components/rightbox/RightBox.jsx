@@ -109,7 +109,7 @@ const RightBox = ({amount, setAmount}) => {
                         ? downBetGroupData.map((address) => (
                             <div className="avatar-container" key={address}>
                               <img
-                                src="https://via.placeholder.com/40"
+                                src={address?.avatarUrl}
                                 alt="User Avatar"
                                 className="avatar"
                               />
