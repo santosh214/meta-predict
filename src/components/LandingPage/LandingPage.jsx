@@ -44,12 +44,111 @@ export default function LandingPage() {
         </div>
       </div>
       <div className="myborder"></div>
-      <div className="container-fluid py-0 py-md-5 mt-0 mt-md-5">
-        <div className="row pt-5">
-          <div className="col-12 col-md-6 d-flex justify-content-center " data-aos='fade-in'>
-            <img src={why} alt="bitcoin" className="img-fluid" />
+      <div className="container-fluid py-0 py-md-3 mt-0 mt-md-5">
+        <div className="row ">
+          <div className="col-12 col-md-12 whyChooseContainer" data-aos="fade-in" data-aos-duration="2000">
+            <h1 className="py-5 text-center">Why Choose Metapredict?</h1>
+
+            {/* Bootstrap Carousel */}
+            <div id="whyChooseCarousel" className="carousel slide" data-bs-ride="carousel">
+              <div className="carousel-inner ">
+                {/* First Carousel Item */}
+                <div className="carousel-item active ">
+                  <div className="row">
+                    {/* Column 1 */}
+                    <div className="col-12 col-md-4 p-3">
+                      <div className="border border-white p-3 carousel-item-content">
+                        <h3>Fully Decentralized and Transparent</h3>
+                        <p>
+                          Built on blockchain, Metapredict ensures fair play with a transparent record of every bid and result. The
+                          decentralized setup removes intermediaries, so you're in control of your predictions and winnings.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Column 2 */}
+                    <div className="col-12 col-md-4 p-3">
+                      <div className="border border-white p-3 carousel-item-content">
+                        <h3>Instant Payouts</h3>
+                        <p>
+                          All winners are paid out instantly, with no waiting periods. You'll receive your rewards in Ozone Coin
+                          immediately after the round ends, allowing for quick access to your earnings.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Column 3 */}
+                    <div className="col-12 col-md-4 p-3">
+                      <div className="border border-white p-3 carousel-item-content">
+                        <h3>Real-Time Bitcoin Price Data</h3>
+                        <p>
+                          We use real-time Bitcoin price data, so your predictions are based on the latest market conditions. This
+                          allows you to test your market instincts with confidence.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Second Carousel Item */}
+                <div className="carousel-item">
+                  <div className="row">
+                    {/* Column 1 */}
+                    <div className="col-12 col-md-4 p-3">
+                      <div className=" p-3 carousel-item-content">
+                        <h3>Earn Referral Bonuses</h3>
+                        <p>
+                          Invite friends to Metapredict, and earn a 10% referral bonus on any winnings they make! It's a great way to
+                          boost your income while sharing the fun.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Column 2 */}
+                    <div className="col-12 col-md-4 p-3">
+                      <div className="border border-white p-3 carousel-item-content">
+                        <h3>Minimal Entry Requirements</h3>
+                        <p>
+                          Whether you're a seasoned trader or new to crypto, Metapredict's easy-to-use platform welcomes all players.
+                          No extensive background needed—just a crypto wallet, some Ozone Coins, and a prediction.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Carousel Controls */}
+              <button
+                className="carousel-control-prevv border"
+                type="button"
+                data-bs-target="#whyChooseCarousel"
+                data-bs-slide="prev"
+                aria-label="Previous"
+              >
+                <span className="carousel-control-prevv-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-nextt"
+                type="button"
+                data-bs-target="#whyChooseCarousel"
+                data-bs-slide="next"
+                aria-label="Next"
+              >
+                <span className="carousel-control-nextt-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
           </div>
-          <div className="col-12 col-md-6 whyChooseContainer" data-aos='fade-in' data-aos-duration='2000'>
+
+
+          {/* <div className="col-12 col-md-6 d-flex justify-content-center " data-aos='fade-in'>
+            <img src={why} alt="bitcoin" className="img-fluid" />
+          </div> */}
+          <>
+          </>
+          {/* <div className="col-12 col-md-6 whyChooseContainer" data-aos='fade-in' data-aos-duration='2000'>
             <h1 className="py-2">Why Choose Metapredict?</h1>
             <ol>
               <li>
@@ -95,7 +194,7 @@ export default function LandingPage() {
                 </p>
               </li>
             </ol>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="myborder"></div>
@@ -183,15 +282,15 @@ export default function LandingPage() {
           <div className="col-12 col-md-6 pt-5 d-grid align-items-center" data-aos='fade-in'>
             <div>
 
-            
-            <h1 className=" mb-2 ">Metapredict Community </h1> <h4>Join the Future of Prediction Gaming</h4>
-            <p className="lead py-3">
-              Metapredict is more than just a game; it's a community of crypto enthusiasts who love the thrill of Bitcoin price action. With real-time predictions, shared knowledge, and referral rewards, we're building a vibrant ecosystem for players around the world.
-            </p>
-            <p className="py-3">
-              Join our community to stay updated on new features, engage in discussions, and compete for the top spot in Metapredict's leaderboard!
-            </p>
-            <h4 className=" mt-4">Sign Up Today and Start Predicting with Metapredict!</h4>
+
+              <h1 className=" mb-2 ">Metapredict Community </h1> <h4>Join the Future of Prediction Gaming</h4>
+              <p className="lead py-3">
+                Metapredict is more than just a game; it's a community of crypto enthusiasts who love the thrill of Bitcoin price action. With real-time predictions, shared knowledge, and referral rewards, we're building a vibrant ecosystem for players around the world.
+              </p>
+              <p className="py-3">
+                Join our community to stay updated on new features, engage in discussions, and compete for the top spot in Metapredict's leaderboard!
+              </p>
+              <h4 className=" mt-4">Sign Up Today and Start Predicting with Metapredict!</h4>
             </div>
 
           </div>
@@ -202,7 +301,7 @@ export default function LandingPage() {
 
       </div>
       <div className="myborder mb-5"></div>
-      <Footer/>
+      <Footer />
 
     </section>
   );

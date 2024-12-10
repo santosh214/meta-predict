@@ -1,130 +1,181 @@
+/* Set a fixed height for the carousel items */
+.carousel-item {
+  height: 400px; /* Adjust as needed */
+}
+
+/* Make sure each carousel item content takes the full height */
+.carousel-item .carousel-item-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content stays within the container */
+  border: 1px solid var(--logo-color) !important;
+  border-radius: 8px !important;
+  transition: transform 0.3s ease-in, box-shadow 0.3s ease-in, background-color 0.3s ease-in; /* Smooth transition for zoom, shadow, and background */
+
+}
+
+/* Add hover effect with background shadow */
+.carousel-item .carousel-item-content:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+   /* Optional: slight background color change */
+  transform: scale(1.1); /* Zoom effect */
+
+}
+.carousel-control-prevv, .carousel-control-nextt {
+  width: 30px; /* Adjust button width */
+  height: 30px; /* Adjust button height */
+  border-radius: 50%; /* Make the buttons round */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  opacity: 1; /* Ensure buttons are visible */
+}
+
+
+  .carousel-control-prevv{
+    position: absolute;
+    bottom: 10px; /* Adjust the bottom distance as needed */
+    left: 45%;
+    transform: translateX(50%);
+    z-index: 10;
+  
+  }
+  .carousel-control-nextt {
+    position: absolute;
+    bottom: 10px; /* Adjust the bottom distance as needed */
+    right: 45%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #000000; /* Ensure visibility on dark backgrounds */
+  }
+  
+
+
 .headingTextContainer {
-    padding-top: 23vh;
-    height: 90vh;
+  padding-top: 23vh;
+  height: 90vh;
+}
+.metaPredict {
+  font-family: "Barlow";
+  font-size: 6em;
+  font-weight: 900;
+  span {
+    color: var(--logo-color);
+  }
+}
+
+.infoText {
+  text-align: center;
+}
+
+.myborder {
+  width: 80%; /* Controls the width of the element */
+  margin: 0 auto; /* Centers the element horizontally */
+  padding: 10px; /* Optional: Adds space inside the element */
+  border-top: 2px solid black; /* Border on top */
+  border-bottom: 2px solid var(--logo-color);
+}
+
+.whyChooseContainer {
+  h1 {
+    font-weight: 800;
+  }
+  li {
+    font-size: 1.9rem;
+    span {
+      font-weight: 600;
+      color: var(--logo-color);
+      border-bottom: 1px solid #fff;
+    }
+  }
+  p {
+    padding-top: 0.2rem;
+    font-size: 1.4rem;
+  }
+}
+
+.howToGetStarted {
+  strong {
+    color: var(--logo-color);
+  }
+  li {
+    border-top: 1px solid white;
+    background-color: transparent;
+    color: var(--logo-color);
+  }
+}
+
+.community {
+  h1 {
+    font-weight: 800;
+  }
+  img {
+    height: 50%;
+  }
+  .myImg {
+    height: 10% !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .headingTextContainer {
   }
   .metaPredict {
     font-family: "Barlow";
-    font-size: 6em;
-    font-weight: 900;
-    span {
-      color: var(--logo-color);
-    }
+    font-size: 2.7rem;
   }
-  
-  
-  .infoText{
-      text-align: center;
+  h1 {
+    font-size: 2rem;
   }
-  
-  
-  .myborder{
-      width: 80%;                /* Controls the width of the element */
-      margin: 0 auto;            /* Centers the element horizontally */
-      padding: 10px;             /* Optional: Adds space inside the element */
-      border-top: 2px solid black;  /* Border on top */
-      border-bottom: 2px solid var(--logo-color);  
+  h3 {
+    font-size: 1.5rem;
   }
-  
-  .whyChooseContainer{
-      h1{
-          font-weight: 800;
-      }
-      li{
-          font-size: 1.9rem;
-          span{
-              font-weight: 600;
-              color: var(--logo-color);
-              border-bottom: 1px solid #fff;
-          }
-      }
-      p{
-          padding-top: 0.2rem;
-          font-size: 1.4rem;
-      }
+  h5 {
+    font-size: 0.9rem;
   }
-  
-  .howToGetStarted{
-   
-    strong {
-        color: var(--logo-color);
+
+  .whyChooseContainer {
+    h1 {
+      font-weight: 800;
     }
     li {
-        border-top: 1px solid white;
-        background-color: transparent;
+      font-size: 2.3rem;
+      span {
+        font-weight: 600;
         color: var(--logo-color);
+        border-bottom: 1px solid #fff;
+      }
+    }
+    p {
+      padding-top: 0.2rem;
+      font-size: 1.8rem;
     }
   }
 
-
-  .community{
-    h1{
-        font-weight: 800;
+  .howToGetStarted {
+    h2 {
+      font-size: 2.4rem;
     }
-    img{
-        height: 50%;
-    }
-    .myImg{
-        height: 10% !important;
+    li {
+      font-size: 2rem;
     }
   }
-  
-  @media only screen and (max-width: 768px) {
-      .headingTextContainer {
-        }
-        .metaPredict {
-          font-family: "Barlow";
-          font-size: 2.7rem;
-        }
-        h1{
-          font-size: 2rem;
-        }
-        h3{
-          font-size: 1.5rem;
-        }
-        h5{
-          font-size: 0.9rem;
-        }
 
-
-        .whyChooseContainer{
-          h1{
-              font-weight: 800;
-          }
-          li{
-              font-size: 2.3rem;
-              span{
-                  font-weight: 600;
-                  color: var(--logo-color);
-                  border-bottom: 1px solid #fff;
-              }
-          }
-          p{
-              padding-top: 0.2rem;
-              font-size: 1.8rem;
-          }
-      }
-      
-      .howToGetStarted{
-        h2{
-          font-size: 2.4rem;
-        }
-        li{
-          font-size: 2rem;
-        }
-      }
-  
-      .community{
-        h1{
-          font-size: 2.5rem;
-        }
-        h4{
-          font-size: 1.8rem;
-        }
-        p{
-          font-size: 1.5rem;
-        }
-      }
-      a{
-        font-size: 1.5rem !important;
-      }
+  .community {
+    h1 {
+      font-size: 2.5rem;
+    }
+    h4 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
   }
+  a {
+    font-size: 1.5rem !important;
+  }
+}
