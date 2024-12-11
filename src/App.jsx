@@ -69,9 +69,9 @@ function App() {
   useEffect(() => {
     AOS.init({
       disable: "phone",
-      duration: 900,
+      duration: 2000,
       easing: "ease-out-cubic",
-      delay:250
+      delay:450
     });
   }, []);
   return (

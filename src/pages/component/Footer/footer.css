@@ -1,0 +1,7 @@
+.mySocial{
+    transition: transform .7s ease-in-out;
+
+}
+.mySocial:hover{
+    transform: rotate(360deg);
+}

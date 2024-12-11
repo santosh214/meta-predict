@@ -1,5 +1,6 @@
 /* Set a fixed height for the carousel items */
 .carousel-item {
+  transition: transform 1s ease;
   height: 400px; /* Adjust as needed */
 }
 
@@ -11,18 +12,18 @@
   justify-content: space-between; /* Ensures content stays within the container */
   border: 1px solid var(--logo-color) !important;
   border-radius: 8px !important;
-  transition: transform 0.3s ease-in, box-shadow 0.3s ease-in, background-color 0.3s ease-in; /* Smooth transition for zoom, shadow, and background */
-
+  transition: transform 0.3s ease-in, box-shadow 0.3s ease-in,
+    background-color 0.3s ease-in; /* Smooth transition for zoom, shadow, and background */
 }
 
 /* Add hover effect with background shadow */
 .carousel-item .carousel-item-content:hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-   /* Optional: slight background color change */
+  /* Optional: slight background color change */
   transform: scale(1.1); /* Zoom effect */
-
 }
-.carousel-control-prevv, .carousel-control-nextt {
+.carousel-control-prevv,
+.carousel-control-nextt {
   width: 30px; /* Adjust button width */
   height: 30px; /* Adjust button height */
   border-radius: 50%; /* Make the buttons round */
@@ -30,29 +31,54 @@
   opacity: 1; /* Ensure buttons are visible */
 }
 
+.carousel-control-prevv {
+  position: absolute;
+  bottom: 10px; /* Adjust the bottom distance as needed */
+  left: 45%;
+  transform: translateX(50%);
+  z-index: 10;
+}
+.carousel-control-nextt {
+  position: absolute;
+  bottom: 10px; /* Adjust the bottom distance as needed */
+  right: 45%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
 
-  .carousel-control-prevv{
-    position: absolute;
-    bottom: 10px; /* Adjust the bottom distance as needed */
-    left: 45%;
-    transform: translateX(50%);
-    z-index: 10;
-  
-  }
-  .carousel-control-nextt {
-    position: absolute;
-    bottom: 10px; /* Adjust the bottom distance as needed */
-    right: 45%;
-    transform: translateX(-50%);
-    z-index: 10;
-  }
-  
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-color: #000000; /* Ensure visibility on dark backgrounds */
-  }
-  
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000000; /* Ensure visibility on dark backgrounds */
+}
 
+.carousel-inner {
+  display: flex;
+  justify-content: space-between; /* This ensures the items spread across the row */
+}
+
+.myHeading {
+  color: var(--orange-color);
+}
+
+.myCarouselBox {
+  .carousel-item-content {
+    /* border: 1px solid #ed3237; */
+    background-color: var(--blue-color);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in, box-shadow 0.3s ease-in;
+    height: 250px;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
+    box-shadow: #064a81 0px 5px 15px;
+    h3 {
+      color: #f58634;
+      /* border-bottom:0.001rem solid var(--orange-color) ; */
+    }
+  }
+}
+.carousel-item-content:hover {
+  box-shadow: #064a81 0px 9px 20px;
+  transform: scale(1.05); /* Zoom effect */
+}
 
 .headingTextContainer {
   padding-top: 23vh;
@@ -105,7 +131,15 @@
     border-top: 1px solid white;
     background-color: transparent;
     color: var(--logo-color);
+    transition: transform 0.3s ease-in, box-shadow 0.3s ease-in;
+
+
   }
+}
+
+.list-group-item:hover{
+  background-color: #000000;
+  transform: scale(1.05);
 }
 
 .community {

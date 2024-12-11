@@ -3,8 +3,11 @@
 
 
 :root {
-  --logo-color: #f4d56f;
+  /* --logo-color: #f4d56f; */
+  --logo-color: #f58634;
   --logo2-color: #ed3237;
+  --blue-color: #032139;
+  --orange-color: #f58634; 
 }
 
 *,*::before, *::after{
