@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { logo } from "../../assets/images";
 import Navbar from "../../components/LandingPage/Navbar";
 import './login.css'
+import { checkRegisterUser } from "../../components/contract/contractMethod";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,10 +45,26 @@ const Login = () => {
     }
   };
   const onFormSubmit = async () => {
-    navigate('/game')
-      setLoading(true);
-        setError("Cannot login with credentials");
+    let _register= await checkRegisterUser(wallet)
+    if(!_register){
+      // navigate('/login')
+      toast.error("Please register first")
+    }
+    else{
+      navigate('/game')
+    }
+    // console.log("form")
+    // navigate('/game')
+    //   setLoading(true);
+    //     setError("Cannot login with credentials");
    };
+   const handleRegisterUser=async(wallet)=>{
+    let _register= await checkRegisterUser(wallet)
+    if(!_register){
+      navigate('/login')
+      toast.error("Please register first")
+    }
+  }
 
   const {
     // register,

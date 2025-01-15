@@ -6,12 +6,14 @@ import {predictContractInstByAddrContractAbi, prediction} from '../contract/pred
 import { ethers } from 'ethers'
 import { useConnectWallet } from '@web3-onboard/react'
 import { toast } from 'react-toastify'
+import { convertToBigInt, convertTowei } from '../../utils/utils'
 const LeftBox = ({amount, setAmount}) => {
     // console.log("🚀 ~ LeftBox ~ amount:", amount)
     const [loader, setloader] = useState(false);
-    const [downLoader, setDownLoader] = useState(false);
     const [{ wallet }] = useConnectWallet();
     const [upBetGroupData, setUpBetGroupData] = useState([]); // Store up bet group data
+  const [totalPoolamount,setTotalPoolAmount]=useState(0);
+
 
     const [poolStatus, setPoolStatus] = useState({
       status: "",
@@ -27,13 +29,7 @@ const LeftBox = ({amount, setAmount}) => {
       }
         // console.log("🚀 ~ handleUp ~ direction:", direction)
         try {
-          if(direction){
-    
-            setloader(true);
-          }
-          if(!direction){
-            setDownLoader(true)
-          }
+          setloader(true)
           const userTrade = {
             poolId: "0x123abc",
             countryCode: "US",
@@ -46,8 +42,7 @@ const LeftBox = ({amount, setAmount}) => {
           let wait = await makeTrade.wait();
           if (wait) {
             setloader(false);
-            setDownLoader(false)
-            handlePools();
+            // handlePools();
             toast.success("Bet done successfully.");
           }
         } catch (error) {
@@ -56,7 +51,6 @@ const LeftBox = ({amount, setAmount}) => {
           const msgParse = JSON.parse(msg);
           // console.log("🚀 ~ handleUp ~ msgParse:", msgParse);
           setloader(false);
-          setDownLoader(false)
     
           // toast.error("Transaction failed");
           if (msgParse?.reason) {
@@ -76,9 +70,20 @@ const LeftBox = ({amount, setAmount}) => {
         };
         socket2.onmessage = (event) => {
           const parsedData = JSON.parse(event.data);
-          console.log("🚀 ~ useEffect ~ parsedData:", parsedData)
           if(parsedData?.data?.upSideUsers){
             setUpBetGroupData(parsedData?.data?.upSideUsers )
+            const totalWei = parsedData?.data?.upSideUsers.reduce((sum, user) => {
+              return sum + convertToBigInt(user.amount);
+            }, BigInt(0));
+            
+            // Convert Wei to Ether (1 Ether = 10^18 Wei)
+            const totalEther = Number(totalWei) / 1e18;
+            
+            // Format to 0.2 decimal format
+            const formattedTotal = totalEther.toFixed(1);
+            
+            // console.log("Total in Ether:", formattedTotal);
+            setTotalPoolAmount(formattedTotal)
           }
         };
     
@@ -103,7 +108,7 @@ const LeftBox = ({amount, setAmount}) => {
                             <div className="amount amount_green" >
                                 {/* <div className="icon-matic" >
                                 </div> */}
-                                -
+                                {totalPoolamount}
                             </div>
                         </div>
                         <div className="player_num">
@@ -113,15 +118,15 @@ const LeftBox = ({amount, setAmount}) => {
                     <div className="players" side="up">
                         <div className="scroll">
                         {upBetGroupData?.length > 0
-                        ? upBetGroupData.map((address) => (
-                            <div className="avatar-container" key={address}>
-                              {console.log("aa",address)}
+                        ? upBetGroupData.map((address,index) => (
+                            <div className="avatar-container d-grid m-1 " style={{justifyItems:'center'}} key={index}>
                               <img
                                 src={address?.avatarUrl}
                                 alt="User Avatar"
-                                className="avatar"
+                                className="avatar m-0"
+                                title={address?.randomName}
                               />
-                              {/* <span>{shortddres(address)}</span> */}
+                              <span className=''>{convertTowei(address?.amount)}</span>
                             </div>
                           ))
                         : ""}

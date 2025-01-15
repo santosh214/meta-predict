@@ -8,10 +8,38 @@ import Community from "../../assets/home/community.png";
 import Footer from "../../pages/component/Footer/Footer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
 
 export default function LandingPage() {
+const [winners,setWinners]=useState([])
+  useEffect(() => {
+
+    topWinners()
+    return () => {
+
+    }
+  }, [])
+
+  const topWinners = async () => {
+    try {
+      await axios
+        .get(
+          `${import.meta.env.VITE_API_URL}top/winners`
+        )
+        .then((res) => {
+          // console.log("🚀 ~ topWinners ~ winners:", res)
+          setWinners(res.data.winners)
+          // setBetHistory(res?.data?.reverse());
+          // console.log("🚀 ~ axios.get ~ res:", res);
+        });
+
+    } catch (error) {
+
+    }
+  }
   return (
     <section className="pb-5">
       <Navbar />
@@ -242,9 +270,54 @@ export default function LandingPage() {
           </ol>
         </div>
 
+        <div className="myborder"></div>
 
       </section>
-
+      {/* {top winners } */}
+      <section>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h1 className="text-center">Top Winners</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            {console.log("tttt",topWinners)}
+            {winners && winners.length > 0 ? (
+              <table className="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>User</th>
+                    {/* <th>Amount (ETH)</th> */}
+                    {/* <th>Prediction</th> */}
+                    <th>Game ID</th>
+                    <th>Winnings (ETH)</th>
+                    {/* <th>Status</th> */}
+                  </tr>
+                </thead>
+                <tbody>
+                  {winners.map((winner, index) => (
+                    <tr key={winner._id}>
+                      <td>{index + 1}</td>
+                      <td>{winner.sender}</td>
+                      {/* <td>{(winner.amount / 1e18).toFixed(2)}</td> Convert wei to ETH */}
+                      {/* <td>{winner.prediction}</td> */}
+                      <td>{winner.gameId}</td>
+                      <td>{winner.winningsAmount}</td>
+                      {/* <td>{winner.status}</td> */}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-center">No winners found.</p>
+            )}
+          </div>
+        </div>
+      </div>
+      </section>
       {/* community */}
       <div className="myborder"></div>
 

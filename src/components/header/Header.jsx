@@ -13,40 +13,40 @@ const Header = () => {
     const { togglePopup } = useContext(SidebarContext);
     const { image } = useContext(SidebarContext);
     const [{ wallet }, connect] = useConnectWallet();
-    const [{ },setChain,] = useSetChain();
+    const [{ }, setChain,] = useSetChain();
 
 
 
     const handleConnect = async () => {
         try {
-          let conn = await connect();
-          if (conn) {
-            // console.log("wallet?.chains[0].id", conn[0].chains[0].id);
-            if (conn[0]?.chains[0]?.id !== "0x460") {
-            //   console.log("window",window)
-              
-              toast.error("Wrong Network! please switch network to Ozone 2.0");
-              setChain({ chainId: "0x460" });
-            } else {
-              toast.success("Connected");
-              // toast.success("right network connected")
+            let conn = await connect();
+            if (conn) {
+                // console.log("wallet?.chains[0].id", conn[0].chains[0].id);
+                if (conn[0]?.chains[0]?.id !== "0x460") {
+                    //   console.log("window",window)
+
+                    toast.error("Wrong Network! please switch network to Ozone 2.0");
+                    setChain({ chainId: "0x460" });
+                } else {
+                    toast.success("Connected");
+                    // toast.success("right network connected")
+                }
+                // console.log("waaa");
             }
-            // console.log("waaa");
-          }
         } catch (error) {
-          toast.error("Couldn't connect");
+            toast.error("Couldn't connect");
         }
-      };
+    };
 
     return (
         <>
             <header className="header" id="header">
                 <div className="site_logo">
                     <Link to={'/'}>
-                    <img src={logo} alt="logo"  />
+                        <img src={logo} alt="logo" />
                     </Link>
                     <Link to={'/'}>
-                    <img src={logo} className="mobile_logo" />
+                        <img src={logo} className="mobile_logo" />
                     </Link>
                     {/* <a className="mobile_leaderboard" href="#"  ></a> */}
                 </div>
@@ -54,11 +54,11 @@ const Header = () => {
                     <div></div>
                 </Link> */}
 
-                <div className="balance_box">
-                    {wallet?.accounts[0].address ? <div className='butt'> <span className="wallet_connect_btn2"> {shortddres(wallet?.accounts[0].address)}</span></div>:
-                    <img className="wallet_connect_btn"
-                        src={walletBtn} alt='wallet btn'
-                        onClick={handleConnect} />}
+                <div className="balance_box" title={wallet?.accounts[0].address}>
+                    {wallet?.accounts[0].address ? <div className='butt'> <span className="wallet_connect_btn2"> {shortddres(wallet?.accounts[0].address)}</span></div> :
+                        <img className="wallet_connect_btn"
+                            src={walletBtn} alt='wallet btn'
+                            onClick={handleConnect} />}
                 </div>
                 {/* <Link to={'/winnertable'}>
                     <div className="header_rightbtn" >

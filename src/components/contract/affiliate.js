@@ -2,6 +2,41 @@ import { ethers } from "ethers";
 
 const affiliateAbi=[
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_affiliatePercentage",
+				"type": "uint256"
+			}
+		],
+		"name": "affiliatePercent",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "admin_",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "affiliatePercentage_",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -44,6 +79,93 @@ const affiliateAbi=[
 		],
 		"name": "AffiliateRewarded",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newAdmin",
+				"type": "address"
+			}
+		],
+		"name": "changeAdmin",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_referrer",
+				"type": "address"
+			}
+		],
+		"name": "registerAffiliate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_winner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_winningAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "rewardAffiliate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "affiliatePercentage",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -101,59 +223,8 @@ const affiliateAbi=[
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			}
-		],
-		"name": "registerAffiliate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_winner",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_winningAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "rewardAffiliate",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdrawRewards",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	}
 ]
-
-
 
 export const affiliate = async (provider) => {
     const etherProvider = new ethers.providers.Web3Provider(provider);

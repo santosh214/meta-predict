@@ -3,54 +3,54 @@ import React, { useState } from 'react'
 const digit = [
     {
         id: 1,
-        num: '0.1'
+        num: '0.1',
+        disabled: false,
     },
     {
         id: 2,
-        num: '0.2'
+        num: '0.2',
+        disabled: false,
     },
     {
         id: 3,
-        num: '0.5'
+        num: '0.5',
+        disabled: false,
     },
     {
         id: 4,
-        num: '1.0'
+        num: '1.0',
+        disabled: true, // Mark as disabled
     },
-    // {
-    //     id: 5,
-    //     num: '25'
-    // },
-    // {
-    //     id: 6,
-    //     num: '30'
-    // },
-    // {
-    //     id: 7,
-    //     num: '35'
-    // }
 ]
 
-const InvestBox = ({amount, setAmount}) => {
+const InvestBox = ({ amount, setAmount }) => {
     const [visibleTab, setVisibleTab] = useState(digit[0].id)
-    const handleBetAmount=(data)=>{
+
+    const handleBetAmount = (data) => {
+        if (data.disabled) return // Prevent action if the option is disabled
         setVisibleTab(data.id)
-        // console.log("🚀 ~ handleBetAmount ~ data.id:", data)
         setAmount(data.num)
     }
+
     return (
         <>
             <div className="invest_select">
-                {
-                    digit.map((data =>
-                        <div className={visibleTab === data.id ?
-                            "invst_btn invst_btn_active" : "invst_btn"}
-                            key={data.id}
-                            onClick={() => handleBetAmount(data)}>
-                            <p className="turbo">{data.num}</p>
-                        </div>
-                    ))
-                }
+                {digit.map((data) => (
+                    <div
+                        className={`invst_btn ${
+                            visibleTab === data.id ? 'invst_btn_active' : ''
+                        } ${data.disabled ? 'invst_btn_disabled' : ''}`}
+                        key={data.id}
+                        onClick={() => handleBetAmount(data)}
+                        style={{
+                            cursor: data.disabled ? 'not-allowed' : 'pointer',
+                            opacity: data.disabled ? 0.5 : 1,
+                        }}
+                        title={data?.disabled?'Upcoming':''}
+                    >
+                        <p className="turbo m-0" >{data.num}</p>
+                    </div>
+                ))}
             </div>
         </>
     )

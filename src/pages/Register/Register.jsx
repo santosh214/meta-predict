@@ -27,7 +27,7 @@ const Register = () => {
         defaultValues: {
             walletAddress: wallet?.accounts[0]?.address || "",
             address: "", // Include 'address' in default values
-            referredAddress:''
+            referredAddress:window.location.search?window.location.search?.split('=')[1]:''
         },
     });
 

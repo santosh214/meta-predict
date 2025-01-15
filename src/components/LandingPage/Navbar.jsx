@@ -42,7 +42,7 @@ function Navbar() {
         <div className="col pt-3">
           <nav className="navbar navbar-expand-lg  " data-bs-theme="dark">
             <div className="container-fluid ">
-              <Link className="navbar-brand mb-0 p-0" href="/">
+              <Link className="navbar-brand mb-0 p-0" to="/">
                 <img src={logo} width={120} height={60} alt="meta-icon" />
               </Link>
               <button

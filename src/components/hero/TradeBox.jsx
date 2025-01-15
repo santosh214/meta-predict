@@ -16,9 +16,10 @@ import BitcoinPriceChart from '../Chart'
 import { ethers } from 'ethers'
 import { predictContractInstByAddrContractAbi } from '../contract/prediction'
 import { useConnectWallet } from '@web3-onboard/react'
+import BitcoinLiveChart from '../../pages/component/trade/Chart'
 
 
-const TradeBox = ({amount, setAmount}) => {
+const TradeBox = ({ amount, setAmount }) => {
     const [{ wallet }] = useConnectWallet();
     const [isLoading, setIsLoading] = useState(true); // Add a loading state
 
@@ -30,152 +31,152 @@ const TradeBox = ({amount, setAmount}) => {
         event: "",
         finalPrice: "",
         initialPrice: "",
-      });
+    });
 
-      useEffect(() => {
+    useEffect(() => {
         const socket = new WebSocket("https://socket.metapredict.io/");
         socket.onmessage = (event) => {
-          const parsedData = JSON.parse(event.data);
-          setPoolStatus({ ...parsedData });
+            const parsedData = JSON.parse(event.data);
+            setPoolStatus({ ...parsedData });
         };
-    
+
         return () => {
-          socket.close();
+            socket.close();
         };
-      }, []);
+    }, []);
 
 
-      useEffect(() => {
+    useEffect(() => {
         setTimeout(() => {
             setIsLoading(false); // Game loaded
-          }, 3000); 
+        }, 3000);
         return () => {
-          
+
         }
-      }, [])
-      
-      useEffect(() => {
+    }, [])
+
+    useEffect(() => {
         const providerUrl = "https://testnet.ozonescan.org/rpc"; // Example: Infura, Alchemy
         const provider = new ethers.providers.JsonRpcProvider(providerUrl);
         const contractAddress = import.meta.env.VITE_APP_PREDICTION_ADDRESS;
         const contract = new ethers.Contract(
-          contractAddress,
-          predictContractInstByAddrContractAbi,
-          provider
+            contractAddress,
+            predictContractInstByAddrContractAbi,
+            provider
         );
         contract.on(
-          "TradeWinningsSent",
-          (
-            poolId,
-            sender,
-            tradeAmount,
-            winningsAmount,
-            indexedSender,
-            feePercentage
-          ) => {
-            if (
-              indexedSender ===
-              ethers.utils.getAddress(wallet?.accounts[0].address)
-            ) {
-              toast.success("You win the game");
+            "TradeWinningsSent",
+            (
+                poolId,
+                sender,
+                tradeAmount,
+                winningsAmount,
+                indexedSender,
+                feePercentage
+            ) => {
+                if (
+                    indexedSender ===
+                    ethers.utils.getAddress(wallet?.accounts[0].address)
+                ) {
+                    toast.success("You win the game");
+                }
             }
-          }
         );
-    
+
         return () => {
-          contract.removeAllListeners();
+            contract.removeAllListeners();
         };
-      }, [wallet]);
-    
+    }, [wallet]);
+
 
 
 
 
     return (
         <>
-        {isLoading ?
-        <div className="container" style={{
-            position:'absolute',
-            top:'40%',
-            right:'5%'
-        }}>
-            <div className="row">
-                <div className="col d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-  <span class="sr-only"></span>
-</div>
-                </div>
-            </div>
-        </div>
-        :
-<>
-            <MobileHeaderPool  poolStatus={poolStatus}/>
-            <div className="trade_center">
-                <div className="market">
-                    <div className="stats">
-                        <div className="side up">
-                            <div className="pool_payout">
-                                        <p className="m-0 p-0">Initial Price</p>
-                                <h1 className="up" >{poolStatus.initialPrice}</h1>
-                                {/* <div className="title">UP POOL PAYOUT</div>
-                                <div className="amount up" >204<span className="sign">%</span></div> */}
+            {isLoading ?
+                <div className="container-fluid" style={{
+                    position: 'absolute',
+                    top: '44%',
+                }}>
+                    <div className="row">
+                        <div className="col d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only"></span>
                             </div>
-                            <div className="own_stats">
-                                <div className="investment">
-                                    {/* <div className="title">YOUR INVESTMENT</div>
+                        </div>
+                    </div>
+                </div>
+                :
+                <>
+                    <MobileHeaderPool poolStatus={poolStatus} />
+                    <div className="trade_center">
+                        <div className="market">
+                            <div className="stats">
+                                <div className="side up">
+                                    <div className="pool_payout">
+                                        {/* <p className="m-0 p-0">Initial Price</p>
+                                <h1 className="up" >{poolStatus.initialPrice}</h1> */}
+                                        {/* <div className="title">UP POOL PAYOUT</div>
+                                <div className="amount up" >204<span className="sign">%</span></div> */}
+                                    </div>
+                                    <div className="own_stats">
+                                        <div className="investment">
+                                            {/* <div className="title">YOUR INVESTMENT</div>
                                     <div className="amount">
                                         <div className="icon-matic"></div>
                                         <IoInfiniteSharp className='icons_infinity' />
                                         10.0
                                     </div> */}
-                                </div>
-                                <div className="payout">
-                                    {/* <div className="title">POTENTIAL RETURN</div>
+                                        </div>
+                                        <div className="payout">
+                                            {/* <div className="title">POTENTIAL RETURN</div>
                                     <div className="amount large_txt">
                                         <div className="icon-matic"></div>
                                         <IoInfiniteSharp className='icons_infinity' />
                                         20.4
                                     </div> */}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="side down">
-                            <div className="pool_payout">
+                                <div className="side down">
+                                    <div className="pool_payout">
 
-
+                                        {/* 
                                 <p className="m-0 p-0">Final Price</p>
-                                <h1 className="down" >{poolStatus.finalPrice}</h1>
+                                <h1 className="down" >{poolStatus.finalPrice}</h1> */}
 
-                                {/* <div className="title">DOWN POOL PAYOUT</div>
+                                        {/* <div className="title">DOWN POOL PAYOUT</div>
                                 <div className="amount down" >177<span className="sign">%</span></div> */}
-                            </div>
-                            <div className="own_stats">
-                                <div className="investment">
-                                    {/* <div className="title">YOUR INVESTMENT</div>
+                                    </div>
+                                    <div className="own_stats">
+                                        <div className="investment">
+                                            {/* <div className="title">YOUR INVESTMENT</div>
                                     <div className="amount">
                                         <div className="icon-matic"></div>
                                         <IoInfiniteSharp className='icons_infinity' />10.0
                                     </div> */}
-                                </div>
-                                <div className="payout">
-                                    {/* <div className="title">POTENTIAL RETURN</div>
+                                        </div>
+                                        <div className="payout">
+                                            {/* <div className="title">POTENTIAL RETURN</div>
                                     <div className="amount large_txt">
                                         <div className="icon-matic"></div>
                                         <IoInfiniteSharp className='icons_infinity' />17.7
                                     </div> */}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
-                    <div className="position_timer" tradephase="open">
-                        <Timer poolStatus={poolStatus} />
-                    </div>
-                    <div className="graph-area">
-                        <BitcoinPriceChart/>
-                    </div>
-                    {/* <div className="graph_area">
+                            <div className="position_timer" tradephase="open">
+                                <Timer poolStatus={poolStatus} />
+                            </div>
+                            <div className="graph-area">
+                                {/* <BitcoinPriceChart/> */}
+                                <BitcoinLiveChart poolStatus={poolStatus} />
+                            </div>
+                            {/* <div className="graph_area">
                         <div className="graph_asset_mobile">
                             <div className="graph_asset_mobile_content">
                                 <div className="asset_wrap">
@@ -244,22 +245,22 @@ const TradeBox = ({amount, setAmount}) => {
                         </div>
                     </div> */}
 
-                </div>
-                <div className="pools_return_wrap">
-                    <button className="toggle-players mobile-view"  onClick={toggleMobilePool}>
-                        {showmobilepool ? '-' : '+'}
-                    </button>
-                 
+                        </div>
+                        <div className="pools_return_wrap">
+                            <button className="toggle-players mobile-view" onClick={toggleMobilePool}>
+                                {showmobilepool ? '-' : '+'}
+                            </button>
+
                             <MobilePoolUp />
                             <MobilePoolDown />
-                </div>
-                <div className="trade_btns_mobile ">
-                    <MobileUpButton  amount={amount} setAmount={setAmount}/>
-                    <MobileDownButton  amount={amount} setAmount={setAmount}/>
-                </div>
-                <InvestBox amount={amount} setAmount={setAmount} />
-            </div>
-            </>
+                        </div>
+                        <div className="trade_btns_mobile ">
+                            <MobileUpButton amount={amount} setAmount={setAmount} />
+                            <MobileDownButton amount={amount} setAmount={setAmount} />
+                        </div>
+                        <InvestBox amount={amount} setAmount={setAmount} />
+                    </div>
+                </>
             }
 
         </>

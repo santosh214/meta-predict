@@ -3,10 +3,12 @@ import axios from "axios";
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
 import Navbar from "../LandingPage/Navbar";
+import { useNavigate } from "react-router-dom";
 
 
 export default function AffiliateIncomeHistory() {
   const [{ wallet }] = useConnectWallet();
+  const navigate = useNavigate();
 
   // State to store the bet history
   const [betHistory, setBetHistory] = useState([
@@ -22,6 +24,9 @@ export default function AffiliateIncomeHistory() {
   useEffect(() => {
     if (wallet) {
       fetchBetHistory(wallet);
+    }
+    else {
+      navigate('/login')
     }
   }, [wallet]);
 

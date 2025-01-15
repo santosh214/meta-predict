@@ -2,98 +2,103 @@ import React, { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { loaderGif } from "../../../assets/images";
-const Timer = ({poolStatus,isMobile}) => {
-// console.log("🚀 ~ Timer ~ poolStatus:", poolStatus?.time)
 
-    const [timeLeft, setTimeLeft] = useState(15); 
-    const [progress, setProgress] = useState(0); 
-    const [color, setColor] = useState("#FF832B"); 
-    const [isLoading, setIsLoading] = useState(false); 
-  
-    // useEffect(() => {
-    //   let timerInterval;
-  
-    //   if (!isLoading) {
-    //     timerInterval = setInterval(() => {
-    //       setTimeLeft((prevTime) => {
-    //         if (prevTime > 0) {
-    //           return prevTime - 1;
-    //         } else {
-    //           clearInterval(timerInterval);
-    //           return 0;
-    //         }
-    //       });
-    //       setProgress((prevProgress) => (prevProgress < 100 ? prevProgress + 100 / 15 : 100));
-    //     }, 1000);
-    //   }
-  
-    //   return () => clearInterval(timerInterval);
-    // }, [isLoading]);
-  
-    useEffect(() => {
-      // Change color based on time left
-      if (timeLeft > 10) {
-        setColor("#FF832B");
-      } else if (timeLeft > 5) {
-        setColor("rgb(234, 132, 78)");
-      } else {
-        setColor("rgb(224, 46, 43)");
-      }
-  
-      // Restart progress bar
-      if (timeLeft === 0) {
-        setIsLoading(true);
-        setTimeout(() => {
-          setIsLoading(false);
-          setTimeLeft(15);
-          setProgress(0);
-        }, 2000); 
-      }
-    }, [timeLeft]);
+const Timer = ({ poolStatus, isMobile }) => {
+  const [timeLeft, setTimeLeft] = useState(0); // Track dynamic countdown
+  const [progress, setProgress] = useState(100); // Progress for the circular bar
+  const [color, setColor] = useState("#FF832B"); // Progress bar color
+  const [isLoading, setIsLoading] = useState(false); // Loader state
 
+  useEffect(() => {
+    if (!poolStatus?.time) return;
 
-  const timeInMinutes = parseInt(poolStatus?.time?.split(':')[1]?.split(" ")[0]);
-  const clampedTime = Math.max(0, timeInMinutes - 5); // ensure the time does not go negative
-  const timeLeftt =poolStatus.status === "Betting Started"? Math.max(0, timeInMinutes - 5):poolStatus.time; // Ensure time doesn't go negative
-  // console.log("🚀 ~ Timer ~ timeLeftt:", timeLeftt)
-  // Disable the button if timeLeft is 0 or betting is not started
-  // const isBettingAllowed = poolStatus.status === "Betting Started" && timeLeftt > 0;
+    const totalTimeInMinutes = parseInt(poolStatus?.time.split(":")[1]?.split(" ")[0]) || 0;
+    const clampedTime = Math.max(0, totalTimeInMinutes - 5); // Prevent negatives
 
-    return (
-        <>
-            <div aria-label="Countdown timer" >
-                <div 
-                  >
-                    {isLoading ? (
-                       <div className="position-relative">
-                         <div className="loader_gif">
-                            <img src={loaderGif} 
-                            className="opacity-4" alt="loader gif" />
-                        </div>
-                       </div>
-                    ) : (
-                        <>
-                            <CircularProgressbar
-                                className="progressBar"
-                                value={timeLeftt ===0? '00:00':timeLeftt}
-                                text={timeLeftt ===0? '00:00':timeLeftt}
-                                styles={buildStyles({
-                                    textColor: color,
-                                    pathColor: color,
-                                    trailColor: "#d6d6d6",
-                                    textSize: "20px",
-                                })}
-                                strokeWidth= {4}
-                            />
+    // Set the initial timeLeft for both statuses
+    if (poolStatus?.status === "Betting Started" || poolStatus?.status === "Observing Price") {
+      setTimeLeft(clampedTime * 60); // Convert to seconds for countdown
+    } else {
+      setTimeLeft(0);
+    }
+  }, [poolStatus]);
 
-                        </>
-                    )}
-                </div>
-           
+  useEffect(() => {
+    let timerInterval;
+
+    if (timeLeft > 0) {
+      timerInterval = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          const updatedTime = prevTime - 1;
+          if (updatedTime <= 0) {
+            clearInterval(timerInterval);
+            return 0;
+          }
+          return updatedTime;
+        });
+        setProgress((prevProgress) => (timeLeft > 0 ? (timeLeft / (timeLeft + 1)) * 100 : 0)); // Update progress
+      }, 1000);
+    } else if (timeLeft === 0) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setProgress(100);
+      }, 2000);
+    }
+
+    return () => clearInterval(timerInterval);
+  }, [timeLeft]);
+
+  useEffect(() => {
+    // Change color based on remaining time
+    if (timeLeft > 20 * 60) {
+      setColor("#8ad603");
+    } else if (timeLeft > 10 * 60) {
+      setColor("rgb(234, 132, 78)");
+    } else if (timeLeft > 5 * 60) {
+      setColor("rgb(234, 132, 78)");
+    } else {
+      setColor("rgb(224, 46, 43)");
+    }
+  }, [timeLeft]);
+
+  const formattedTime = timeLeft > 0
+  ? `${String(Math.floor(timeLeft / 3600)).padStart(2, "0")}:${String(Math.floor((timeLeft % 3600) / 60)).padStart(2, "0")}`
+  : "00:00";
+
+  return (
+    <div aria-label="Countdown timer">
+      {(poolStatus?.status === "Betting Started" || poolStatus?.status === "Observing Price") ? (
+        <div>
+          {isLoading ? (
+            <div className="position-relative">
+              <div className="loader_gif">
+                <img src={loaderGif} className="opacity-4" alt="Loading..." />
+              </div>
             </div>
-          {!isMobile &&  <span className="sec" > {timeLeftt ===0?'-': poolStatus?.status}</span>}
-        </>
-    )
-}
+          ) : (
+            <CircularProgressbar
+              className="progressBar"
+              value={progress}
+              text={formattedTime}
+              styles={buildStyles({
+                textColor: color,
+                pathColor: color,
+                trailColor: "#d6d6d6",
+                textSize: "20px",
+              })}
+              strokeWidth={4}
+            />
+          )}
+        </div>
+      ) : (
+        <span className="sec">-</span>
+      )}
+      {!isMobile && (
+        <span className="sec" style={{color:'#fff'}}>{poolStatus?.status}</span>
+      )}
+    </div>
+  );
+};
 
-export default Timer
+export default Timer;

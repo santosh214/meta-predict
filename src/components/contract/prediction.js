@@ -148,6 +148,11 @@ export const predictContractInstByAddrContractAbi = [
 			},
 			{
 				"internalType": "address",
+				"name": "_feeJackpotAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
 				"name": "_affiliateManager",
 				"type": "address"
 			}
@@ -466,9 +471,9 @@ export const predictContractInstByAddrContractAbi = [
 			},
 			{
 				"indexed": false,
-				"internalType": "uint8",
-				"name": "feePercentage",
-				"type": "uint8"
+				"internalType": "uint256",
+				"name": "finalWin",
+				"type": "uint256"
 			}
 		],
 		"name": "TradeWinningsSent",
@@ -536,6 +541,32 @@ export const predictContractInstByAddrContractAbi = [
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "feeJackpotAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "feeJackpotPercentage",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
 			}
 		],
 		"stateMutability": "view",
@@ -723,16 +754,6 @@ export const predictContractInstByAddrContractAbi = [
 						"type": "address[]"
 					},
 					{
-						"internalType": "string[]",
-						"name": "avatars",
-						"type": "string[]"
-					},
-					{
-						"internalType": "string[]",
-						"name": "countries",
-						"type": "string[]"
-					},
-					{
 						"internalType": "uint256",
 						"name": "total",
 						"type": "uint256"
@@ -765,16 +786,6 @@ export const predictContractInstByAddrContractAbi = [
 						"type": "address[]"
 					},
 					{
-						"internalType": "string[]",
-						"name": "avatars",
-						"type": "string[]"
-					},
-					{
-						"internalType": "string[]",
-						"name": "countries",
-						"type": "string[]"
-					},
-					{
 						"internalType": "uint256",
 						"name": "total",
 						"type": "uint256"
@@ -804,8 +815,6 @@ export const predictContractInstByAddrContractAbi = [
 		"type": "function"
 	}
 ];
-
-
 
 export const prediction = async (provider) => {
   const etherProvider = new ethers.providers.Web3Provider(provider);

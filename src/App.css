@@ -5,3 +5,25 @@
     /* vertical-align: middle; */
     transform: rotate(40deg);
 }
+
+
+.invst_btn_disabled {
+    color: gray;
+    border: 1px dashed gray;
+}
+.invst_btn {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.invst_btn_active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+.invst_btn:hover {
+    background-color: #f0f0f0;
+}

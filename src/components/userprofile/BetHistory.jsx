@@ -7,22 +7,27 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import Navbar from "../LandingPage/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import { shortddres } from "../../utils/utils";
+import { convertTotalAmount, shortddres } from "../../utils/utils";
 import { checkRegisterUser } from "../contract/contractMethod";
+import { toast } from "react-toastify";
+import Loader from "../Loader/Loader";
 
 export default function IncomeHistory() {
 
   const navigate = useNavigate();
 
   const [{ wallet }, connect] = useConnectWallet();
-  
+  const [userLoader, setUserLoader] = useState(false)
+
   // State for random image and user data (investments and affiliate earnings)
-  const [userDetails,setUserDetails]=useState({
-    avatarUrl:'',
-    parentAddress:'',
-    randomName:'',
-    userAddress:''
+  const [userDetails, setUserDetails] = useState({
+    avatarUrl: '',
+    parentAddress: '',
+    randomName: '',
+    userAddress: '',
+    totalWinning: 0
   })
+  // console.log("🚀 ~ IncomeHistory ~ userDetails:", userDetails)
   // State to store the bet history
   const [betHistory, setBetHistory] = useState([
 
@@ -33,26 +38,28 @@ export default function IncomeHistory() {
   const [page, setPage] = useState(1); // Current page number
   const [itemsPerPage] = useState(10); // Number of items per page
 
-  const getUserDetails=(wallet)=>{
+  const getUserDetails = (wallet) => {
     try {
-        console.log("import.meta.env.VITE_SOME_KEY",import.meta.env.VITE_API_URL)
-        axios.get(`${import.meta.env.VITE_API_URL}users/${ethers.utils.getAddress(wallet?.accounts[0].address)}`).then((res) => {
-          console.log("🚀 ~ axios.get ~ res:", res)
-          setUserDetails({...res.data.users})
-        })
+      setUserLoader(true)
+      axios.get(`${import.meta.env.VITE_API_URL}users/${ethers.utils.getAddress(wallet?.accounts[0].address)}`).then((res) => {
+        // console.log("🚀 ~ axios.get ~ res:", res)
+        setUserDetails({ ...res.data.user })
+        setUserLoader(false)
+
+      })
     } catch (error) {
+      setUserLoader(false)
       toast.error("User not found")
       console.log("🚀 ~ getUserDetails ~ error:", error)
-      
     }
   }
 
-  const handleRegisterUser=async(wallet)=>{
-    let _register= await checkRegisterUser(wallet)
-    if(!_register){
+  const handleRegisterUser = async (wallet) => {
+    let _register = await checkRegisterUser(wallet)
+    if (!_register) {
       navigate('/login')
       toast.error("Please register first")
-    }else{
+    } else {
       getUserDetails(wallet)
     }
   }
@@ -61,7 +68,7 @@ export default function IncomeHistory() {
     if (wallet) {
       handleRegisterUser(wallet)
     }
-    else{
+    else {
       navigate('/login')
     }
 
@@ -72,7 +79,7 @@ export default function IncomeHistory() {
   // Fetch the betting history on component mount
   useEffect(() => {
     if (wallet) {
-        fetchBetHistory(wallet);
+      fetchBetHistory(wallet);
     }
   }, [wallet]);
 
@@ -115,139 +122,220 @@ export default function IncomeHistory() {
   if (error) {
     return <div>{error}</div>;
   }
-
+  const handleRefer = () => {
+    // console.log("rfer",window.location.origin)
+    const url = `${window.location.origin}/register?address=${wallet?.accounts[0].address}`
+    navigator.clipboard.writeText(url)
+    toast.success("Copied")
+  }
   return (
     <section>
       <Navbar />
-      <div className="container-fluid mt-5 ">
-      <div className="row">
-        {/* First Card: User Profile */}
-        <div className="col-md-3">
-          <div className="card " style={{ minHeight: '550px' }}>
-            <div className="card-body text-center">
-              <h5 className="card-title text-center">{userDetails?.randomName}</h5>
+      <div className="container-fluid  ">
+        <div className="row g-4">
+          {/* Profile Card */}
+          <div className="col-md-4 d-flex align-items-stretch">
+            <div className="card shadow-lg border-0 w-100" style={{ minHeight: '300px' }}>
+              <div className="card-body text-center">
+                {userLoader ?
+                 <Loader/>:
+                  <img
+                    src={userDetails.avatarUrl ?? `https://picsum.photos/200?random=${Math.floor(Math.random() * 1000)}`}
+                    alt="Profile"
+                    className="img-fluid rounded-circle shadow"
+                    style={{ width: '120px', height: '120px', objectFit: 'cover' }}
+                    onLoad={() => setUserLoader(false)} // Hide loader when image loads
+                    onError={() => {
+                      setUserLoader(false);
+                      console.log("Error loading image");
+                    }} // Handle image load error
+                  />
+                }
 
-              {wallet ? (
-                  <>
-              <div className="text-center">
-                  {/* Profile Image */}
-                  <img 
-                    src={userDetails.avatarUrl ??`https://picsum.photos/200?random=${Math.floor(Math.random() * 1000)}`} 
-                    alt="Random Profile" 
-                    className="img-fluid rounded-circle" 
-                    style={{ width: '150px', height: '150px' }}
-                    />
-                    </div>
-
-                  <h6 className="py-3 ">Wallet Address:  <span title={userDetails?.userAddress}> {shortddres (wallet.accounts[0].address)}</span></h6>
-                  <h6 className="py-2 ">Parent Address:  <span title={userDetails?.parentAddress}>{shortddres(userDetails?.parentAddress)}</span></h6>
-                </>
-              ) : (
-                <button className="btn btn-primary" onClick={() => connect()}>
-                  Connect Wallet
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Second Card: Investment Details */}
-        <div className="col-md-3">
-          <div className="card" style={{ minHeight: '200px' }}>
-            <div className="card-body ">
-              <h2 className="card-title fw-bold">Investment</h2>
-              {wallet ? (
-                <>
-                  <h5 className="py-2">Total Invested</h5>
-                  {/* <h5 className="pt-4">${'00.00'}</h5> */}
-                </>
-              ) : (
-                <h6>Connect your wallet to view investment details.</h6>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Third Card: Affiliate Earnings */}
-        <div className="col-md-4">
-          <div className="card" style={{ minHeight: '200px' }}>
-              <Link to={"/affiliate"}>
-                <div className="card-body ">
-                <h2 className="card-title fw-bold">Affiliate Earnings</h2>
-                {wallet ? (
-                  <>
-                    <h5 className="py-2">Total Earnings</h5>
-                    {/* <h5 className="pt-4">${'00.00'}</h5> */}
-                  </>
-                ) : (
-                  <h6>Connect your wallet to view affiliate earnings.</h6>
-                )}
+                <h5 className="mt-3 text-primary">{userDetails.randomName || "Guest User"}</h5>
+                <div className="mt-4">
+                  <p className="mb-2">
+                    <i className="bi bi-wallet2 me-2 text-success"></i>
+                    <span title={wallet?.accounts[0].address}>
+                      {wallet ? shortddres(wallet.accounts[0].address) : "Not Connected"}
+                    </span>
+                  </p>
+                  <p>
+                    <i className="bi bi-people-fill me-2 text-info"></i>
+                    <span title={userDetails.parentAddress}>
+                      {userDetails.parentAddress ? shortddres(userDetails.parentAddress) : "N/A"}
+                    </span>
+                  </p>
+                  {wallet && (
+                    <button
+                      className="btn btn-outline-primary mt-3"
+                      onClick={handleRefer}
+                      style={{ borderRadius: '20px' }}
+                    >
+                      Copy Referral Link <i className="bi bi-clipboard ms-2"></i>
+                    </button>
+                  )}
+                </div>
               </div>
-              </Link>
+            </div>
+          </div>
+
+          {/* Total Winning Card */}
+          <div className="col-md-4 d-flex align-items-stretch">
+            <div
+              className="card text-white text-center shadow-lg border-0 w-100"
+              style={{
+                // background: 'linear-gradient(135deg, #ff9a9e, #fad0c4)',
+                minHeight: '300px',
+              }}
+            >
+              <div className="card-body d-flex flex-column justify-content-center">
+                <h2 className="fw-bold">Total Winnings</h2>
+                <h1 className="mt-3">
+                  <i className="bi bi-trophy-fill me-2"></i>
+                  {convertTotalAmount(userDetails.totalWinning) || 0}
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          {/* Affiliate Earnings Card */}
+          <div className="col-md-4 d-flex align-items-stretch">
+            <Link to="/affiliate" className="text-decoration-none w-100">
+              <div
+                className="card text-white text-center shadow-lg border-0 w-100"
+                style={{
+                  // background: 'linear-gradient(135deg, #89f7fe, #66a6ff)',
+                  minHeight: '400px',
+                }}
+              >
+                <div className="card-body d-flex flex-column justify-content-center">
+                  <h2 className="fw-bold">Affiliate Earnings</h2>
+                  <p className="mt-3">Check your total earnings</p>
+                  <div>
+                    <button className="btn btn-light btn  text-primary fw-bold mt-2">
+                      View Details <i className="bi bi-arrow-right ms-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
+
+
       </div>
-    </div>
       <div className="container-fluid pt-5">
-        <h1 className="py-3">Income History (BTC Bets)</h1>
+        <div className="row">
+          <div className="col-12">
+            <h1 className="py-3 text-center text-primary fw-bold">
+              <i className="bi bi-graph-up-arrow me-2"></i>
+              Income History (OZONE Bets)
+            </h1>
+          </div>
+        </div>
+
         {betHistory.length === 0 ? (
-          <h5 className="text-center border border-2 py-2">No betting history available</h5>
+          <div className="row">
+            <div className="col-12">
+              <div className="alert alert-info text-center shadow-sm" role="alert">
+                <i className="bi bi-info-circle me-2"></i> No betting history available!
+              </div>
+            </div>
+          </div>
         ) : (
-          <>
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Amount (BTC)</th>
-                  <th scope="col">Direction</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Winnings Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentBets.map((bet, index) => (
-                  <tr key={index}>
-                    <td>{new Date(bet.timestamp).toLocaleString()}</td>
-                    <td>{ethers.utils.formatEther(bet?.amount?.toString())?.toString()} BTC</td>
-                    <td>{bet.prediction}</td>
-                    <td>{bet.status}</td>
-                    <td>{ethers.utils.formatEther(bet?.winningsAmount?.toString())?.toString()} BTC</td>
+          <div className="row">
+            {/* Income Table */}
+            <div className="col-12">
+              <div className="card shadow-sm border-0">
+                <div className="card-body">
+                  <table className="table table-hover table-striped align-middle">
+                    <thead className="table-dark">
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount (OZO)</th>
+                        <th scope="col">Direction</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Winnings Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {currentBets.map((bet, index) => (
+                        <tr key={index}>
+                          <td>{new Date(bet.timestamp).toLocaleString()}</td>
+                          <td>
+                            <span className="badge bg-success">
+                              {ethers.utils.formatEther(bet?.amount?.toString())?.toString()} OZO
+                            </span>
+                          </td>
+                          <td>
+                            <span
+                              className={`badge ${bet.prediction === "Up"
+                                ? "bg-primary"
+                                : "bg-danger"
+                                }`}
+                            >
+                              {bet.prediction}
+                            </span>
+                          </td>
+                          <td>
+                            <span
+                              className={`badge ${bet.status === "Win"
+                                ? "bg-success"
+                                : bet.status === "Loss"
+                                  ? "bg-danger"
+                                  : "bg-secondary"
+                                }`}
+                            >
+                              {bet.status}
+                            </span>
+                          </td>
+                          <td>{bet?.winningsAmount?.toString()} OZO</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-                    </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {/* Pagination Controls */}
-            <nav aria-label="Page navigation">
-              <ul className="pagination justify-content-center">
-                <li className={`page-item ${page === 1 ? "disabled" : ""}`}>
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(page - 1)}
+            {/* Pagination */}
+            <div className="col-12 mt-4">
+              <nav aria-label="Page navigation">
+                <ul className="pagination justify-content-center">
+                  <li
+                    className={`page-item ${page === 1 ? "disabled" : ""}`}
                   >
-                    Previous
-                  </button>
-                </li>
-                <li className="page-item">
-                  <button className="page-link">{page}</button>
-                </li>
-                <li
-                  className={`page-item ${page === Math.ceil(betHistory.length / itemsPerPage) ? "disabled" : ""
-                    }`}
-                >
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(page + 1)}
+                    <button
+                      className="page-link"
+                      onClick={() => handlePageChange(page - 1)}
+                    >
+                      <i className="bi bi-chevron-left"></i> Previous
+                    </button>
+                  </li>
+                  <li className="page-item">
+                    <button className="page-link">{page}</button>
+                  </li>
+                  <li
+                    className={`page-item ${page === Math.ceil(betHistory.length / itemsPerPage)
+                      ? "disabled"
+                      : ""
+                      }`}
                   >
-                    Next
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </>
+                    <button
+                      className="page-link"
+                      onClick={() => handlePageChange(page + 1)}
+                    >
+                      Next <i className="bi bi-chevron-right"></i>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         )}
       </div>
+
     </section>
   );
 }

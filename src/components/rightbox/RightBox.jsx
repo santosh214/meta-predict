@@ -5,6 +5,7 @@ import { useConnectWallet } from '@web3-onboard/react'
 import {predictContractInstByAddrContractAbi, prediction} from '../contract/prediction'
 import { ethers } from 'ethers'
 import { toast } from 'react-toastify'
+import { convertToBigInt, convertTowei } from '../../utils/utils'
 
 
 
@@ -15,6 +16,7 @@ const RightBox = ({amount, setAmount}) => {
   const [downLoader, setDownLoader] = useState(false);
   const [{ wallet }] = useConnectWallet();
   const [downBetGroupData, setDownBetGroupData] = useState([]); // Store down bet group data
+  const [totalPoolamount,setTotalPoolAmount]=useState(0);
   const [poolStatus, setPoolStatus] = useState({
     status: "",
     time: "",
@@ -43,7 +45,7 @@ const RightBox = ({amount, setAmount}) => {
         let wait = await makeTrade.wait();
         if (wait) {
           setDownLoader(false)
-          handlePools();
+          // handlePools();
           toast.success("Bet done successfully.");
         }
       } catch (error) {
@@ -73,6 +75,19 @@ const RightBox = ({amount, setAmount}) => {
           const parsedData = JSON.parse(event.data);
           if(parsedData?.data?.downSideUsers){
             setDownBetGroupData(parsedData?.data?.downSideUsers )
+            
+            // Calculate total in Wei
+            const totalWei = parsedData?.data?.downSideUsers.reduce((sum, user) => {
+              return sum + convertToBigInt(user.amount);
+            }, BigInt(0));
+            
+            // Convert Wei to Ether (1 Ether = 10^18 Wei)
+            const totalEther = Number(totalWei) / 1e18;
+            
+            // Format to 0.2 decimal format
+            const formattedTotal = totalEther.toFixed(1);
+            
+            setTotalPoolAmount(formattedTotal)
           }
         };
     
@@ -99,22 +114,23 @@ const RightBox = ({amount, setAmount}) => {
                                 <div className="amount amount_red"   >
                                     <div className="icon-matic"></div>
                                     {/* 110.0 */}
-                                    -
+                                    {totalPoolamount ?? '011'}
                                 </div>
                         </div>
                     </div>
                     <div className="players" side="down">
                         <div className="scroll">
                         {downBetGroupData?.length > 0
-                        ? downBetGroupData.map((address) => (
-                            <div className="avatar-container" key={address}>
-                              <img
-                                src={address?.avatarUrl}
-                                alt="User Avatar"
-                                className="avatar"
-                              />
-                              {/* <span>{shortddres(address)}</span> */}
-                            </div>
+                        ? downBetGroupData.map((address,index) => (
+                          <div className="avatar-container d-grid m-1 " style={{justifyItems:'center'}} key={index}>
+                          <img
+                            src={address?.avatarUrl}
+                            alt="User Avatar"
+                            className="avatar m-0"
+                            title={address?.randomName}
+                          />
+                          <span className=''>{convertTowei(address?.amount)}</span>
+                        </div>
                           ))
                         : ""}
                             {/* {

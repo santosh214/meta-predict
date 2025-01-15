@@ -9,18 +9,11 @@ import routes from './pages'
 import './App.css'
 import injectedModule from '@web3-onboard/injected-wallets'
 
-import UserPorfile from './components/userprofile/UserPorfile'
-import Home01 from './pages/views/Home01'
 import Home02 from './pages/views/Home02'
-import Home03 from './pages/views/Home03'
 import Wallet from './components/walletpopup/Wallet'
 import { init, Web3OnboardProvider } from '@web3-onboard/react'
-import IncomeHistory from './components/userprofile/BetHistory'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import AffiliateIncomeHistory from './components/userprofile/AffiliateIncomeHistory'
-import LandingPage from './components/LandingPage/LandingPage'
-import Navbar from './components/LandingPage/Navbar'
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -100,19 +93,8 @@ function App() {
                   </div>
                 </>
               } />
-
-
-              {/* <Route path="/affiliate" element={<AffiliateIncomeHistory />} /> */}
-
-              {/* <Route path='/trade' exact element={<Home02 />} /> */}
-              {/* <Route path='/k3lotre' exact element={<Home03 />} /> */}
             </Routes>
-
-
           </SidebarProvider>
-
-
-
         </div>
       </div>
     </Web3OnboardProvider>

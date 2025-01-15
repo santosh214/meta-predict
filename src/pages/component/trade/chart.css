@@ -1,0 +1,186 @@
+.mychart{
+    padding: 5rem 0rem 4rem 0;
+}
+.myfont {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+  
+  .price-display {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #8ad603;
+  }
+  @font-face {
+    font-family: 'E1234';
+    src: url('../../../assets/font/E1234.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+  
+  .digital-clock {
+    padding: 1rem;
+    font-size: 3vw;
+    font-weight: 600;
+    font-family: "E1234"; /* Use a digital font */
+    /* text-shadow: 0 0 5px rgba(0, 123, 255, 0.6), 0 0 10px rgba(0, 123, 255, 0.4); */
+  }
+  
+  .container-fluid {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  
+  .row {
+    margin-top: 20px;
+  }
+  
+  .col {
+    padding: 10px;
+  }
+  
+  .price-red {
+    color: rgb(224, 46, 43);
+  }
+  
+  .price-green {
+    color: #92e204;
+  }
+  
+  .result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  
+  .result-up {
+    color: white;
+    background-color: green;
+  }
+  
+  .result-down {
+    color: white;
+    background-color: red;
+  }
+  
+  .result-neutral {
+    color: black;
+    background-color: lightgray;
+  }
+  
+
+
+  /* General Result Box Styles */
+  .result-box2{
+    padding: 3rem;
+  }
+.result-box {
+    text-transform: uppercase;
+    width: 200px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 3px solid;
+    display: inline-block;
+    animation: glowing-shadow 1.5s infinite alternate;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* "Up wins" styles */
+  .result-up {
+    border-color: green;
+    color: green;
+    animation: border-moving-green 3s linear infinite;
+  }
+  
+  /* "Down wins" styles */
+  .result-down {
+    border-color: red;
+    color: red;
+    animation: border-moving-red 3s linear infinite;
+  }
+  
+  /* "No wins" styles */
+  .result-neutral {
+    border-color: gray;
+    color: gray;
+    animation: border-moving-gray 3s linear infinite;
+  }
+  
+  /* Moving Border Animation */
+  @keyframes border-moving-green {
+    0% {
+      border-color: green;
+      box-shadow: 0 0 10px green;
+    }
+    50% {
+      border-color: lightgreen;
+      box-shadow: 0 0 20px lightgreen;
+    }
+    100% {
+      border-color: green;
+      box-shadow: 0 0 10px green;
+    }
+  }
+  
+  @keyframes border-moving-red {
+    0% {
+      border-color: red;
+      box-shadow: 0 0 10px red;
+    }
+    50% {
+      border-color: pink;
+      box-shadow: 0 0 20px pink;
+    }
+    100% {
+      border-color: red;
+      box-shadow: 0 0 10px red;
+    }
+  }
+  
+  @keyframes border-moving-gray {
+    0% {
+      border-color: gray;
+      box-shadow: 0 0 10px gray;
+    }
+    50% {
+      border-color: lightgray;
+      box-shadow: 0 0 20px lightgray;
+    }
+    100% {
+      border-color: gray;
+      box-shadow: 0 0 10px gray;
+    }
+  }
+  
+  /* Glowing Shadow Effect */
+  @keyframes glowing-shadow {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+
+
+  @media screen and (max-width: 480px) {
+    .mychart{
+        padding: 0rem;
+    }
+    .result-box2{
+        padding: 0;
+    }
+    .result-box{
+        padding: 0px;
+        margin-top: 0px;
+    }
+}
